@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3DCGデザイナーポートフォリオ - Natorium_23</title>
-    <!-- Tailwind CSS CDN --><script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN --><script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <title>3DCG Designer Portfolio - Natorium_23</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         /* Interフォントの設定 */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -44,9 +46,7 @@
             }
         });
 
-        // ====================================================================
-        // 定数データ
-        // ====================================================================
+        // ReactコンポーネントのロジックをプレーンJavaScriptに変換して実装します
 
         const PROFILE_IMAGE_URL = 'https://pbs.twimg.com/profile_images/1940382517321777152/hEWt1GVI_400x400.jpg';
 
@@ -55,8 +55,8 @@
                 id: 1, 
                 title: 'Vtuber Model "KANA"', 
                 category: 'character', 
-                image: 'https://placehold.co/400x533/FF6961/ffffff?text=KANA+Model', // 変更: 赤系
-                imageTpose: 'https://placehold.co/400x533/FF7F50/ffffff?text=KANA+T-Pose', 
+                image: 'img src="https://lh4.googleusercontent.com/d/1xPEviXfgEG8lKi-lzG4GEKwTFIkPuWGF', 
+                imageTpose: 'https://placehold.co/400x533/FF7F50/ffffff?text=T-Pose+Model', // 疑似Tポーズ画像
                 description: '明るく元気な印象のVtuberモデルです。テクスチャの描き込みにこだわり、衣装差分2種、パーフェクトシンク対応で制作しました。',
                 specs: ['Blender', 'Unity', 'VRChat対応', '表情モーフ50種'],
                 link: 'https://youtube.com',
@@ -66,8 +66,8 @@
                 id: 2, 
                 title: 'VRChat Avatar "CYBER"', 
                 category: 'character', 
-                image: 'https://placehold.co/400x533/32A1C3/ffffff?text=CYBER+Avatar', // 変更: 青系
-                imageTpose: 'https://placehold.co/400x533/00BFFF/ffffff?text=CYBER+T-Pose', 
+                image: 'img src="https://lh4.googleusercontent.com/d/1WOMPSwgrRxRU-36iFAU0JviF4JLEwkl6',
+                imageTpose: 'img src="https://lh4.googleusercontent.com/d/1oKYnhzweCr67ZimLHWyJXRmvQM5Q3S4i', // 疑似Tポーズ画像
                 description: 'サイバーパンクな世界観を持つVRChat向けアバター。ギミックを多数組み込み、フルトラッキングでの動作安定性を重視しました。',
                 specs: ['Blender', 'Unity', 'フルスクラッチ', '軽量化済'],
                 link: 'https://vrchat.com',
@@ -77,8 +77,8 @@
                 id: 5, 
                 title: 'Original Character', 
                 category: 'character', 
-                image: 'https://placehold.co/400x533/8FD14F/ffffff?text=Original+Character', // 変更: 緑系
-                imageTpose: 'https://placehold.co/400x533/90EE90/ffffff?text=Original+T-Pose', 
+                image: PROFILE_IMAGE_URL,
+                imageTpose: 'https://placehold.co/400x533/90EE90/ffffff?text=T-Pose+Model', // 疑似Tポーズ画像
                 description: 'ポートフォリオ用に制作したオリジナルキャラクター。可愛らしいデフォルメと独特なシェーディングが特徴です。',
                 specs: ['Blender', 'ZBrush', 'トゥーンシェーダー'],
                 link: '#',
@@ -88,8 +88,8 @@
                 id: 7, 
                 title: 'Fan Model "RURU"', 
                 category: 'fanmodel', 
-                image: 'https://placehold.co/400x533/9F55D7/ffffff?text=RURU+Fan+Model', // 変更: 紫系
-                imageTpose: 'https://placehold.co/400x533/FFA07A/ffffff?text=RURU+T-Pose', 
+                image: PROFILE_IMAGE_URL,
+                imageTpose: 'https://placehold.co/400x533/FFA07A/ffffff?text=T-Pose+Model', // 疑似Tポーズ画像
                 description: '人気キャラクターのファンモデルを制作。オリジナルのデザインを尊重しつつ、モデリングの技術力をアピールするために制作しました。',
                 specs: ['Blender', 'テクスチャ調整', '非営利目的'],
                 link: '#',
@@ -99,8 +99,8 @@
                 id: 8, 
                 title: 'Fan Model "JIN"', 
                 category: 'fanmodel', 
-                image: 'https://placehold.co/400x533/7B8D9E/ffffff?text=JIN+Fan+Model', // 変更: グレー系
-                imageTpose: 'https://placehold.co/400x533/20B2AA/ffffff?text=JIN+T-Pose', 
+                image: PROFILE_IMAGE_URL,
+                imageTpose: 'https://placehold.co/400x533/20B2AA/ffffff?text=T-Pose+Model', // 疑似Tポーズ画像
                 description: 'メカデザインのファンモデル。複雑なパーツ構成と硬質な質感を再現することに挑戦しました。',
                 specs: ['Blender', 'ハードサーフェス', '複雑なリギング'],
                 link: '#',
@@ -180,14 +180,6 @@
             { id: 'fanmodel', name: 'ファンモデル' },
             { id: 'others', name: 'その他' },
         ];
-        
-        const INQUIRY_OPTIONS = [
-            { value: '依頼_新規フルモデル制作', label: '新規フルモデル制作（Vtuber/VRChat）' },
-            { value: '依頼_衣装・パーツ制作', label: '衣装・パーツ等の部分制作・追加' },
-            { value: '質問_料金・納期について', label: '料金・納期に関するご質問' },
-            { value: '質問_技術的な相談', label: '技術的なご相談・互換性について' },
-            { value: 'その他', label: 'その他' }
-        ];
 
         // 料金をカンマ区切りにするヘルパー関数
         const formatPrice = (price) => {
@@ -200,11 +192,11 @@
         let activeTab = 'all';
         let selectedWork = null;
         let isMenuOpen = false;
+        // モーダル内で現在表示されている画像のキーを保持する新しい状態変数
         let activeModalImageKey = null; 
-        let contactMessage = { text: '', type: '' }; // { text: string, type: 'success' | 'error' }
 
         // ====================================================================
-        // Core Logic (UI Navigation)
+        // Core Logic
         // ====================================================================
 
         const scrollToSection = (id) => {
@@ -229,6 +221,7 @@
         const openModal = (work) => {
             if (!work.isPlaceholder) {
                 selectedWork = work;
+                // モーダルを開く際に、デフォルトでメイン画像を設定
                 activeModalImageKey = 'main'; 
                 renderApp();
             }
@@ -240,62 +233,11 @@
             renderApp();
         };
         
+        // モーダル内の画像を切り替える関数
         const setActiveModalImage = (key) => {
             activeModalImageKey = key;
             renderApp();
         };
-
-        // ====================================================================
-        // Form & Message Logic
-        // ====================================================================
-
-        // メッセージを表示する関数 (stateを更新して再描画)
-        function showMessage(message, type) {
-            contactMessage = { text: message, type: type };
-            renderApp();
-
-            // 5秒後にメッセージを非表示にする
-            setTimeout(() => {
-                contactMessage = { text: '', type: '' };
-                renderApp();
-            }, 5000);
-        }
-
-        // フォーム送信を処理する関数
-        function handleSubmit(event) {
-            // フォームのデフォルトの送信動作をキャンセル
-            event.preventDefault();
-
-            // フォーム要素からデータを取得 (DOMから直接取得)
-            const form = document.getElementById('contactForm');
-            if (!form) return;
-
-            const name = form.querySelector('#name').value.trim();
-            const email = form.querySelector('#email').value.trim();
-            const inquiryType = form.querySelector('#inquiryType').value.trim();
-            const details = form.querySelector('#details').value.trim();
-            
-            // 必須フィールドの検証
-            if (!name || !email || inquiryType === '' || details === '') {
-                showMessage('全ての必須項目を入力してください。', 'error');
-                return;
-            }
-
-            // ここで、通常はAPIエンドポイントにデータをPOSTします。
-            // 今回はシミュレーションとしてコンソールに表示します。
-            console.log("--- お問い合わせ内容 (送信シミュレーション) ---");
-            console.log("お名前:", name);
-            console.log("メールアドレス:", email);
-            console.log("選択されたお問い合わせ種別:", inquiryType);
-            console.log("詳細内容:", details);
-            console.log("---------------------------------------");
-
-            // 送信完了メッセージを表示
-            showMessage('お問い合わせを送信しました。内容を確認後、担当者よりご連絡いたします。', 'success');
-
-            // フォームをリセット
-            form.reset();
-        }
 
         // ====================================================================
         // HTML Templates (JSXライクな構文)
@@ -580,20 +522,24 @@
                                     <div class="absolute left-8 md:left-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-500 border-[6px] border-white shadow-lg flex items-center justify-center rounded-full z-10 shrink-0">
                                         <i data-lucide="${item.icon}" class="text-white drop-shadow-sm" style="width: 24px; height: 24px;"></i>
                                     </div>
-                                    <div class="w-full md:w-[calc(50%-4rem)] ${
+                                    <div class="w-full md:w-[calc(50%-4rem)] pl-24 md:pl-0 ${
                                         index % 2 === 0 ? 'md:text-left' : 'md:text-right'
                                     }">
-                                        <div class="md:hidden flex items-center gap-3 text-orange-600 font-black mb-2">
-                                            <div class="h-1 w-6 bg-orange-500 rounded-full"></div>
-                                            <span>STEP ${item.step}</span>
-                                        </div>
-                                        <div class="p-6 bg-white border border-gray-100 rounded-3xl shadow-lg transition-all duration-300 hover:shadow-xl">
-                                            <h4 class="text-3xl font-black text-gray-900 mb-3 leading-snug">
-                                                ${item.title}
-                                            </h4>
-                                            <p class="text-gray-600 font-medium leading-relaxed">${item.desc}</p>
+                                        <div class="bg-white p-10 rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative group">
+                                            <span class="absolute -top-8 text-7xl font-black text-orange-100/80 select-none group-hover:text-orange-200/80 transition-colors ${
+                                                index % 2 === 0 ? 'left-10' : 'right-10'
+                                            }">${item.step}</span>
+                                            <div class="flex flex-col relative z-10 ${
+                                                index % 2 === 0 ? 'md:items-start' : 'md:items-end'
+                                            }">
+                                                <h4 class="text-3xl font-black text-gray-900 mb-4">${item.title}</h4>
+                                                <p class="text-gray-600 text-base leading-relaxed font-medium">
+                                                    ${item.desc}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
+                                    <div class="hidden md:block w-[calc(50%-4rem)]"></div>
                                 </div>
                             `).join('')}
                         </div>
@@ -603,259 +549,240 @@
         `;
 
         const Contact = () => `
-            <section id="contact" class="relative z-10 py-24 bg-gradient-to-b from-orange-50 to-white mt-12 md:mt-24">
-                <div class="max-w-4xl mx-auto px-6 text-center">
-                    <div class="text-center mb-16">
-                        <h3 class="text-5xl font-black text-gray-900 mb-4 relative inline-block">
-                            CONTACT
-                            <span class="absolute -bottom-3 left-0 w-full h-2 bg-orange-500 rounded-full"></span>
-                        </h3>
-                        <p class="text-gray-600 mt-6 font-medium text-lg">まずはフォームからお気軽にご相談ください</p>
-                    </div>
-                    
-                    <div class="bg-white p-6 md:p-12 rounded-[2.5rem] shadow-2xl border-4 border-orange-500/20 max-w-2xl mx-auto relative overflow-hidden text-left">
-                        <!-- 装飾用の光 -->
-                        <div class="absolute top-0 right-0 w-24 h-24 bg-pink-300/50 rounded-full blur-2xl translate-x-1/4 -translate-y-1/4 pointer-events-none"></div>
+            <section id="contact" class="relative z-10 py-24 px-6 max-w-5xl mx-auto text-center">
+                <h3 class="text-5xl font-black text-gray-900 mb-10 relative inline-block">
+                    CONTACT
+                    <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-24 h-2 bg-orange-500 rounded-full"></span>
+                </h3>
+                <p class="text-gray-600 mb-16 leading-relaxed font-medium text-xl max-w-3xl mx-auto">
+                    制作のご依頼、お見積り、ご相談などお気軽にご連絡ください。<br/>
+                    ワクワクするようなプロジェクトをお待ちしています！
+                </p>
 
-                        <p class="text-gray-600 text-base leading-relaxed mb-6 font-medium">
-                            ご依頼・ご質問は、以下のフォームより必要事項を入力の上、送信してください。
-                            <br class="hidden sm:inline" />内容を確認後、担当者よりご連絡させていただきます。
-                        </p>
-
-                        <!-- メッセージ表示エリア -->
-                        ${contactMessage.text ? `
-                            <div id="messageBox" class="p-4 rounded-xl font-medium mb-6 transition duration-300 border border-current ${
-                                contactMessage.type === 'success' ? 'bg-green-100 text-green-700 border-green-300' : 'bg-red-100 text-red-700 border-red-300'
-                            }" role="alert">
-                                ${contactMessage.text}
-                            </div>
-                        ` : ''}
-
-                        <!-- お問い合わせフォーム -->
-                        <form id="contactForm" onsubmit="handleSubmit(event)" class="space-y-6">
-                            
-                            <!-- お名前 (必須) -->
-                            <div>
-                                <label for="name" class="block text-sm font-bold text-gray-800 mb-1">お名前 <span class="text-red-500">*</span></label>
-                                <input type="text" id="name" name="name" required
-                                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition duration-150"
-                                    placeholder="山田 太郎">
-                            </div>
-
-                            <!-- メールアドレス (必須) -->
-                            <div>
-                                <label for="email" class="block text-sm font-bold text-gray-800 mb-1">メールアドレス <span class="text-red-500">*</span></label>
-                                <input type="email" id="email" name="email" required
-                                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition duration-150"
-                                    placeholder="example@domain.com">
-                            </div>
-
-                            <!-- お問い合わせ種別のプルダウン (必須) -->
-                            <div>
-                                <label for="inquiryType" class="block text-sm font-bold text-gray-800 mb-1">お問い合わせ種別 <span class="text-red-500">*</span></label>
-                                <select id="inquiryType" name="inquiryType" required
-                                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition duration-150 appearance-none bg-white">
-                                    <option value="" disabled selected>--- 選択してください ---</option>
-                                    ${INQUIRY_OPTIONS.map(opt => `
-                                        <option value="${opt.value}">${opt.label}</option>
-                                    `).join('')}
-                                </select>
-                                <p class="text-xs text-gray-500 mt-1">最も近いご相談内容をお選びください。</p>
-                            </div>
-
-                            <!-- 詳細内容 (必須) -->
-                            <div>
-                                <label for="details" class="block text-sm font-bold text-gray-800 mb-1">詳細内容 <span class="text-red-500">*</span></label>
-                                <textarea id="details" name="details" rows="5" required
-                                    class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-200 transition duration-150"
-                                    placeholder="具体的なご依頼内容（予算、納期、キャラクター設定など）をご記入ください。"></textarea>
-                            </div>
-
-                            <!-- 送信ボタン -->
-                            <button type="submit"
-                                class="w-full flex justify-center py-4 px-4 border border-transparent rounded-full shadow-lg text-lg font-bold text-white bg-orange-500 hover:bg-orange-600 focus:outline-none focus:ring-4 focus:ring-orange-300 transition duration-200 ease-in-out transform hover:scale-[1.01] active:scale-[0.99] mt-8">
-                                <i data-lucide="send" class="mr-3" style="width: 20px; height: 20px;"></i>
-                                <span>送信する</span>
-                            </button>
-                        </form>
-                        
-                        <div class="mt-8 pt-6 border-t border-gray-100 text-center">
-                            <h4 class="text-sm font-bold text-gray-500 uppercase mb-3 flex items-center justify-center gap-2">
-                                <i data-lucide="info" style="width: 16px; height: 16px;"></i> 注意事項
-                            </h4>
-                            <p class="text-sm text-gray-500 italic">
-                                * 返信には通常2～3営業日いただいております。<br>
-                                * 営業目的のお問い合わせはご遠慮ください。
-                            </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
+                    <!-- X (旧Twitter) -->
+                    <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="x-button flex flex-col items-center justify-center p-10 bg-white rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 group transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-gray-900/0 to-gray-900/0 group-hover:from-gray-900/10 group-hover:to-white transition-all duration-300"></div>
+                        <div class="bg-gray-100 p-5 rounded-full mb-6 group-hover:bg-gray-900 group-hover:scale-110 transition-all shadow-sm relative z-10">
+                            <i data-lucide="twitter" class="lucide-twitter group-hover:text-white transition-colors" style="width: 40px; height: 40px;"></i>
                         </div>
+                        <span class="font-black text-xl text-gray-900 relative z-10">X</span>
+                        <span class="text-base text-gray-500 mt-2 font-medium relative z-10">@Natorium_23 / DM Open</span>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:natorium23cg@gmail.com" class="flex flex-col items-center justify-center p-10 bg-white rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 group transition-all duration-300 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-white transition-all duration-300"></div>
+                        <div class="bg-orange-50 p-5 rounded-full mb-6 group-hover:bg-orange-500 group-hover:scale-110 transition-all shadow-sm relative z-10">
+                            <i data-lucide="mail" class="text-orange-500 group-hover:text-white transition-colors" style="width: 40px; height: 40px;"></i>
+                        </div>
+                        <span class="font-black text-xl text-gray-900 relative z-10">Email</span>
+                        <span class="text-base text-gray-500 mt-2 font-medium relative z-10">natorium23cg@gmail.com</span>
+                    </a>
+                </div>
+                
+                <div class="bg-white p-10 md:p-16 rounded-[3rem] border border-gray-100 text-left max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+                    <div class="relative z-10">
+                        <h4 class="text-gray-900 font-black mb-8 text-2xl flex items-center gap-3">
+                            <span class="bg-orange-500 w-3 h-10 rounded-full block shadow-sm"></span>
+                            ご依頼テンプレート
+                        </h4>
+                        <!-- テンプレート内の不要な空行を削除しました -->
+                        <pre class="whitespace-pre-wrap text-sm md:text-base bg-gray-50 p-6 rounded-xl border border-gray-200 text-gray-700 leading-relaxed">
+■ ご希望モデルの種類 (Vtuber/VRChatアバター/その他):
+■ キャラクター概要 (既存デザインがある場合はURLや画像添付):
+■ 使用用途 (配信/VRChat/ゲーム開発など):
+■ 納品希望形式 (VRM/UnityPackage/FBXなど):
+■ 予算感 (可能な範囲でご記入ください):
+■ 納期希望日:
+■ その他ご要望:
+                        </pre>
+                        <p class="text-sm text-gray-500 mt-6 italic">
+                            上記テンプレートをコピーし、DMまたはメールにてご連絡いただけるとスムーズです。
+                        </p>
                     </div>
                 </div>
             </section>
         `;
 
         const Footer = () => `
-            <footer class="bg-gray-800 text-gray-400 py-10 px-6">
-                <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-                    <div class="text-xl font-black tracking-wider text-white">
-                        Natorium<span class="text-orange-500">_23</span>
+            <footer class="py-12 bg-gray-900 text-white text-center text-sm">
+                <div class="max-w-6xl mx-auto px-6">
+                    <div class="flex justify-center space-x-6 mb-6">
+                        <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-orange-500 transition-colors">
+                            <i data-lucide="twitter" class="lucide-twitter text-gray-400 hover:text-orange-500 transition-colors" style="width: 20px; height: 20px;"></i>
+                        </a>
+                        <a href="mailto:natorium23cg@gmail.com" class="text-gray-400 hover:text-orange-500 transition-colors">
+                            <i data-lucide="mail" style="width: 20px; height: 20px;"></i>
+                        </a>
                     </div>
-                    <nav class="flex space-x-6">
-                        ${navLinks.map(link => `
-                            <button 
-                                onclick="scrollToSection('${link.id}')"
-                                class="text-sm hover:text-orange-400 transition-colors"
-                            >
-                                ${link.name}
-                            </button>
-                        `).join('')}
-                    </nav>
-                    <p class="text-sm">
-                        &copy; 2024 Natorium_23 Portfolio. All Rights Reserved.
-                    </p>
+                    <p class="text-gray-500">&copy; 2024 Natorium_23. All rights reserved.</p>
                 </div>
             </footer>
         `;
-        
-        const WorkModal = () => {
-            if (!selectedWork) return '';
 
-            // 画像URLの選択ロジック
-            let currentImageUrl;
-            let mainImageClass = 'h-full w-full object-contain'; 
-            
-            if (activeModalImageKey === 'main') {
-                currentImageUrl = selectedWork.image;
-            } else if (activeModalImageKey === 'tpose') {
-                currentImageUrl = selectedWork.imageTpose;
-            } else {
-                currentImageUrl = selectedWork.image; // デフォルト
+        const WorkModal = (work) => {
+            if (!work) return '';
+
+            // 画像マップを動的に作成
+            const imageMap = [
+                { 
+                    src: work.image, 
+                    alt: `${work.title} メインビジュアル`, 
+                    label: 'メインビジュアル',
+                    key: 'main'
+                },
+            ];
+
+            // T-pose画像があれば追加
+            if (work.imageTpose) {
+                imageMap.push({
+                    src: work.imageTpose, 
+                    alt: `${work.title} Tポーズ`, 
+                    label: 'Tポーズ (リギング確認用)',
+                    key: 'tpose'
+                });
             }
 
+            // 現在アクティブな画像キーを取得。未設定なら最初の画像キー('main')を使用。
+            const currentImageKey = activeModalImageKey || 'main';
+            const currentImage = imageMap.find(i => i.key === currentImageKey) || imageMap[0];
+
             return `
-                <div class="fixed inset-0 bg-gray-900 bg-opacity-80 z-[100] flex items-center justify-center p-4 md:p-8" onclick="closeModal()">
-                    <div class="bg-white rounded-3xl shadow-2xl max-w-5xl w-full h-full max-h-[90vh] overflow-hidden flex flex-col transition-all duration-300" onclick="event.stopPropagation()">
-                        
-                        <!-- Header -->
-                        <div class="flex justify-between items-center p-6 border-b border-gray-100 shrink-0">
-                            <h3 class="text-2xl md:text-3xl font-black text-gray-900">${selectedWork.title}</h3>
-                            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-800 transition-colors bg-gray-100 p-2 rounded-full">
-                                <i data-lucide="x" style="width: 24px; height: 24px;"></i>
-                            </button>
-                        </div>
-                        
-                        <!-- Content -->
-                        <div class="flex-1 overflow-y-auto p-4 md:p-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div 
+                    id="work-modal"
+                    class="fixed inset-0 z-[100] bg-gray-900 bg-opacity-70 flex items-center justify-center p-4 overflow-y-auto"
+                    onclick="closeModal()" 
+                >
+                    <div 
+                        class="bg-white rounded-3xl w-full max-w-6xl max-h-[95vh] overflow-y-auto shadow-2xl transform transition-all duration-300 scale-100 opacity-100"
+                        onclick="event.stopPropagation()"
+                    >
+                        <div class="flex flex-col lg:flex-row h-full">
                             
-                            <!-- Image Column -->
-                            <div class="md:col-span-2 flex flex-col">
-                                <!-- Main Display Image (Big) -->
-                                <div class="bg-gray-100 rounded-2xl flex-1 overflow-hidden p-2 mb-4 h-full relative">
+                            <!-- 1. 左側: 画像ギャラリー -->
+                            <div class="w-full lg:w-3/4 shrink-0 bg-gray-100 relative rounded-t-3xl lg:rounded-l-3xl lg:rounded-tr-none overflow-hidden p-6 flex flex-col items-center justify-start">
+                                
+                                <button 
+                                    onclick="closeModal()"
+                                    class="absolute top-4 right-4 bg-gray-900/50 hover:bg-gray-900 p-2 rounded-full text-white transition-colors z-20"
+                                >
+                                    <i data-lucide="x" style="width: 24px; height: 24px;"></i>
+                                </button>
+                                
+                                <div class="w-full bg-gray-200 rounded-xl overflow-hidden flex-shrink-0 mb-4 flex items-center justify-center" style="max-height: 80%;">
                                     <img 
-                                        src="${currentImageUrl}" 
-                                        alt="${selectedWork.title} - ${activeModalImageKey === 'main' ? 'メイン' : 'Tポーズ'}" 
-                                        class="${mainImageClass} w-full h-full"
-                                        onerror="this.onerror=null; this.src='https://placehold.co/800x1066/EF4444/ffffff?text=Image+Error';"
+                                        src="${currentImage.src}" 
+                                        alt="${currentImage.alt}" 
+                                        class="w-full h-full object-cover p-4 transition-opacity duration-300"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/1000x1500/EF4444/ffffff?text=Image+Error';"
                                     />
                                 </div>
 
-                                <!-- Thumbnails (Small for switching) - 画像サイズ調整の修正箇所 -->
-                                <div class="flex gap-4 justify-center shrink-0">
-                                    <!-- Main Image Thumbnail -->
-                                    <button 
-                                        onclick="setActiveModalImage('main')"
-                                        class="w-24 h-32 relative rounded-xl overflow-hidden shadow-md transition-all duration-200 border-2 ${activeModalImageKey === 'main' ? 'border-orange-500 scale-105' : 'border-gray-200 hover:border-orange-300'}"
-                                    >
-                                        <img 
-                                            src="${selectedWork.image}" 
-                                            alt="メイン画像" 
-                                            class="w-full h-full object-cover opacity-70"
-                                        />
-                                        <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 text-white font-bold text-xs uppercase">
-                                            MAIN
-                                        </div>
-                                    </button>
-
-                                    <!-- T-Pose Image Thumbnail -->
-                                    ${selectedWork.imageTpose ? `
-                                        <button 
-                                            onclick="setActiveModalImage('tpose')"
-                                            class="w-24 h-32 relative rounded-xl overflow-hidden shadow-md transition-all duration-200 border-2 ${activeModalImageKey === 'tpose' ? 'border-orange-500 scale-105' : 'border-gray-200 hover:border-orange-300'}"
+                                <!-- サムネイルエリア (画像切り替えロジックを追加) -->
+                                <div class="flex-shrink-0 w-full flex space-x-4 justify-center">
+                                    ${imageMap.map(data => `
+                                        <div
+                                            onclick="setActiveModalImage('${data.key}')" 
+                                            class="w-24 h-24 sm:w-32 sm:h-32 bg-gray-300 rounded-lg overflow-hidden cursor-pointer transition-all duration-200 border-4 ${
+                                                data.key === currentImageKey ? 'border-orange-500 opacity-100' : 'border-gray-300 opacity-70 hover:opacity-100'
+                                            }"
                                         >
                                             <img 
-                                                src="${selectedWork.imageTpose}" 
-                                                alt="Tポーズ画像" 
-                                                class="w-full h-full object-cover opacity-70"
+                                                src="${data.src}" 
+                                                alt="${data.alt}" 
+                                                class="w-full h-full object-cover"
+                                                onerror="this.onerror=null; this.src='https://placehold.co/100x100/EF4444/ffffff?text=X';"
                                             />
-                                            <div class="absolute inset-0 flex items-center justify-center bg-gray-900/40 text-white font-bold text-xs uppercase">
-                                                T-POSE
-                                            </div>
-                                        </button>
-                                    ` : ''}
-                                </div>
-                            </div>
-                            
-                            <!-- Detail Column -->
-                            <div class="md:col-span-1">
-                                <h4 class="text-xl font-bold text-orange-500 mb-2">DETAIL</h4>
-                                <p class="text-gray-600 mb-6 leading-relaxed">${selectedWork.description}</p>
-                                
-                                <h4 class="text-xl font-bold text-orange-500 mb-2 mt-6">SPECS & TOOLS</h4>
-                                <ul class="space-y-2 mb-8">
-                                    ${selectedWork.specs.map(spec => `
-                                        <li class="flex items-center gap-2 text-gray-700 bg-gray-50 p-3 rounded-xl border border-gray-100">
-                                            <i data-lucide="check-circle" class="text-green-500 shrink-0" style="width: 18px; height: 18px;"></i>
-                                            <span class="font-medium">${spec}</span>
-                                        </li>
+                                        </div>
                                     `).join('')}
-                                </ul>
+                                </div>
 
-                                <a 
-                                    href="${selectedWork.link}" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    class="w-full flex items-center justify-center gap-3 bg-orange-500 text-white px-6 py-3 rounded-full font-semibold text-lg hover:bg-orange-600 transition-colors shadow-lg mt-8"
-                                >
-                                    <span>関連リンクを見る</span>
-                                    <i data-lucide="external-link" style="width: 20px; height: 20px;"></i>
-                                </a>
+                            </div>
+
+                            <!-- 2. 右側: 詳細情報 -->
+                            <div class="w-full lg:w-1/4 flex flex-col p-8 lg:p-12">
+                                <span class="text-sm font-bold bg-orange-100 text-orange-600 px-4 py-1 mb-3 inline-block rounded-full uppercase tracking-wider">
+                                    ${filterTabs.find(t => t.id === work.category)?.name || work.category}
+                                </span>
+                                <h2 class="text-4xl font-black text-gray-900 mb-6">${work.title}</h2>
+                                
+                                <p class="text-gray-700 text-lg leading-relaxed mb-8 border-b pb-6">
+                                    ${work.description}
+                                </p>
+
+                                <h4 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2">
+                                    <i data-lucide="tag" class="text-orange-500" style="width: 20px; height: 20px;"></i> 技術・仕様
+                                </h4>
+                                <div class="flex flex-wrap gap-2 mb-8">
+                                    ${work.specs.map(spec => `
+                                        <span class="bg-gray-100 text-gray-700 text-sm font-medium px-4 py-1.5 rounded-full shadow-sm">
+                                            ${spec}
+                                        </span>
+                                    `).join('')}
+                                </div>
+
+                                ${work.link && work.link !== '#' ? `
+                                    <div class="pt-6 border-t">
+                                        <a 
+                                            href="${work.link}" 
+                                            target="_blank" 
+                                            rel="noopener noreferrer"
+                                            class="inline-flex items-center gap-2 text-white bg-orange-500 hover:bg-orange-600 px-6 py-3 rounded-full font-semibold transition-colors shadow-md"
+                                        >
+                                            関連リンクを見る
+                                            <i data-lucide="external-link" style="width: 20px; height: 20px;"></i>
+                                        </a>
+                                    </div>
+                                ` : ''}
                             </div>
                         </div>
-
                     </div>
                 </div>
             `;
         };
 
-
         // ====================================================================
-        // Render Function
+        // Main Render Function
         // ====================================================================
 
         const renderApp = () => {
-            const root = document.getElementById('root');
-            if (!root) return;
+            const app = document.getElementById('root');
+            if (!app) return;
 
-            root.innerHTML = `
-                ${Header()}
-                <main>
+            app.innerHTML = `
+                <div class="min-h-screen relative">
+                    
+                    <!-- 背景パターン -->
+                    <div class="fixed inset-0 z-0 opacity-30 pointer-events-none" 
+                        style="background-image: radial-gradient(#fdba74 1px, transparent 1px); background-size: 24px 24px;">
+                    </div>
+                    
+                    <!-- 装飾用の大きな円 -->
+                    <div class="fixed top-[-20%] right-[-10%] w-[600px] h-[600px] bg-orange-100 rounded-full blur-3xl opacity-50 pointer-events-none z-0"></div>
+                    <div class="fixed bottom-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-100 rounded-full blur-3xl opacity-50 pointer-events-none z-0"></div>
+
+                    ${Header()}
                     ${Hero()}
                     ${About()}
                     ${Works()}
                     ${Price()}
                     ${Flow()}
                     ${Contact()}
-                </main>
-                ${Footer()}
-                ${WorkModal()}
+                    ${Footer()}
+                </div>
+                ${WorkModal(selectedWork)}
             `;
-            // Lucideアイコンを再作成（動的に追加されたHTML要素に対応）
+
+            // Lucideアイコンを再作成
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
             }
         };
 
-        // Initialize the application
-        window.onload = renderApp;
+        // 初期描画
+        document.addEventListener('DOMContentLoaded', renderApp);
     </script>
 </body>
 </html>

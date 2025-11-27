@@ -167,6 +167,30 @@
                 isPlaceholder: false
             },
             { 
+                id: 4, 
+                title: 'Vtuber Model "Robora様"', 
+                category: 'character', 
+                image: 'https://lh3.googleusercontent.com/d/128fAKO8RJDOKYh0xV19bJoURqPhsR1fJ',
+                imageTpose: 'https://lh3.googleusercontent.com/d/1laEqnCD_qo2dhcHH5-n9BsLiNvuFOUHo',
+                description: 'かわいいロボットのミニモデルを制作させていただきました。顔の表情変化はUVスクロールで表現しています。マスコットのサメの揺れの動きも工夫いたしました。',
+                specs: ['MAYA', 'Unity', 'VRChat対応'],
+                link: 'https://x.com/Natorium_23/status/1993250810222829972?s=20',
+                isPlaceholder: false
+            },
+            { 
+                id: 5, 
+                title: 'Vtuber Model "異咲ヒトカ様"', 
+                category: 'character', 
+                image: 'https://lh3.googleusercontent.com/d/1AlFmwbHVsjQsZQEJBjxctecUTq3wJqi0',
+                imageTpose: 'https://lh3.googleusercontent.com/d/1pXrqN1ApsMXxVJNg8IuULb_K9qbyqYnq',
+                gallery: [ 'https://lh3.googleusercontent.com/d/1ZFX6ziRlw-1nu7BYOC3-ExXUiJlSO1Tv'
+                ],
+                description: 'モデル1体と髪の毛2種での制作をさせていただきました。３面図に合わせあっさりとしたテクスチャで仕上げさせていただきました。',
+                specs: ['MAYA', 'Unity', 'ZBrush'],
+                link: 'https://x.com/Natorium_23/status/1993635854443540537?s=20',
+                isPlaceholder: false
+            },
+            { 
                 id: 50, 
                 title: 'Fan Model "星街すいせい様"', 
                 category: 'fanmodel', 
@@ -850,6 +874,18 @@
                 });
             }
 
+            // ギャラリー画像の処理
+            if (work.gallery && Array.isArray(work.gallery)) {
+                work.gallery.forEach((imgUrl, index) => {
+                    imageMap.push({
+                        src: imgUrl,
+                        alt: `${work.title} ギャラリー ${index + 1}`,
+                        label: `ギャラリー ${index + 1}`,
+                        key: `gallery-${index}`
+                    });
+                });
+            }
+
             const currentImageKey = activeModalImageKey || 'main';
             const currentImage = imageMap.find(i => i.key === currentImageKey) || imageMap[0];
 
@@ -883,11 +919,11 @@
                             </div>
 
                             <!-- サムネイルエリア -->
-                            <div class="flex-shrink-0 w-full flex space-x-4 justify-center h-20 z-10">
+                            <div class="flex-shrink-0 w-full flex space-x-4 justify-center h-20 z-10 overflow-x-auto">
                                 ${imageMap.map(data => `
                                     <div
                                         onclick="setActiveModalImage('${data.key}')" 
-                                        class="w-20 h-20 bg-gray-300 rounded-lg overflow-hidden cursor-pointer transition-all duration-200 border-4 ${
+                                        class="w-20 h-20 bg-gray-300 rounded-lg overflow-hidden cursor-pointer transition-all duration-200 border-4 flex-shrink-0 ${
                                             data.key === currentImageKey ? 'border-orange-500 opacity-100 scale-105' : 'border-gray-300 opacity-70 hover:opacity-100'
                                         }"
                                     >
@@ -921,7 +957,7 @@
                                         </span>
                                     </div>
                                     <h2 class="text-xl lg:text-2xl font-bold text-gray-900 leading-tight tracking-tight">
-                                        ${work.title.replace(/ "(.+)"/, '<br/><span class="block mt-1 text-2xl lg:text-4xl font-black text-gray-900 whitespace-nowrap">"$1"</span>')}
+                                        ${work.title.replace(/ "(.+)"/, '<br/><span class="block mt-1 text-2xl lg:text-3xl font-black text-gray-900 whitespace-nowrap">"$1"</span>')}
                                     </h2>
                                 </div>
 

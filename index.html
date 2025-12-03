@@ -142,6 +142,8 @@
                 description: '女性らしい体つきを意識して制作しました。VRM,VRChat用でのセットアップを行いました。',
                 specs: ['MAYA', 'Unity', 'VRChat対応', 'パーフェクトシンク対応'],
                 link: 'https://x.com/Natorium_23/status/1851931662336340312/video/1',
+                // vroidHubLinkを設定するとボタンが表示されます
+                vroidHubLink: 'https://hub.vroid.com/characters/3869237375734873753/models/6454529233586532564', 
                 isPlaceholder: false
             },
             { 
@@ -153,6 +155,7 @@
                 description: 'イメージ画像の雰囲気に合わせるのを意識いたしました。エフェクトによる腕の表現やアニメーションによる形状の変化など工夫を多く行いました。',
                 specs: ['MAYA', 'Unity', ],
                 link: '#',
+                vroidHubLink: null, // リンクがない場合はnullまたは空文字
                 isPlaceholder: false
             },
             { 
@@ -164,6 +167,7 @@
                 description: '元気な印象のかわいい女の子を意識して制作しました。３面図の印象に合わせるためにテクスチャでの表現を強めに制作しました。',
                 specs: ['MAYA', 'Unity', 'ZBrush', 'VRChat対応', 'パーフェクトシンク対応'],
                 link: 'https://x.com/Natorium_23/status/1961594719147864253',
+                vroidHubLink: 'https://hub.vroid.com/characters/36458115496192517/models/8903403066642418596',
                 isPlaceholder: false
             },
             { 
@@ -175,6 +179,7 @@
                 description: 'かわいいロボットのミニモデルを制作させていただきました。顔の表情変化はUVスクロールで表現しています。マスコットのサメの揺れの動きも工夫いたしました。',
                 specs: ['MAYA', 'Unity', 'VRChat対応'],
                 link: 'https://x.com/Natorium_23/status/1993250810222829972?s=20',
+                vroidHubLink: null,
                 isPlaceholder: false
             },
             { 
@@ -188,6 +193,7 @@
                 description: 'モデル1体と髪の毛2種での制作をさせていただきました。３面図に合わせあっさりとしたテクスチャで仕上げさせていただきました。',
                 specs: ['MAYA', 'Unity', 'ZBrush'],
                 link: 'https://x.com/Natorium_23/status/1993635854443540537?s=20',
+                vroidHubLink: 'https://hub.vroid.com/characters/1023123953515366634/models/7379864552754776646',
                 isPlaceholder: false
             },
             { 
@@ -199,6 +205,7 @@
                 description: '学生のときに制作したモデルになります。',
                 specs: ['MAYA', 'Unity', ],
                 link: '#',
+                vroidHubLink: null,
                 isPlaceholder: false
             },
             {
@@ -210,7 +217,8 @@
                 description: '現在、その他のカテゴリの制作実績を準備中です。新しい作品が完成次第、公開いたします。',
                 specs: [''],
                 isPlaceholder: true,
-                link: '#'
+                link: '#',
+                vroidHubLink: null
             }
         ];
 
@@ -889,6 +897,47 @@
             const currentImageKey = activeModalImageKey || 'main';
             const currentImage = imageMap.find(i => i.key === currentImageKey) || imageMap[0];
 
+            // リンクボタンエリアの構築
+            const hasMainLink = work.link && work.link !== '#';
+            const hasVroidLink = work.vroidHubLink && work.vroidHubLink !== '#' && work.vroidHubLink !== null;
+
+            let linksHtml = '';
+            if (hasMainLink || hasVroidLink) {
+                linksHtml += '<div class="pt-6 border-t border-gray-100 flex flex-col gap-3">';
+                
+                if (hasMainLink) {
+                    linksHtml += `
+                        <a 
+                            href="${work.link}" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="w-full inline-flex items-center justify-center gap-2 text-white bg-gray-900 hover:bg-orange-500 px-6 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl group"
+                        >
+                            関連リンクを見る
+                            <i data-lucide="external-link" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    `;
+                }
+
+                if (hasVroidLink) {
+                    linksHtml += `
+                        <a 
+                            href="${work.vroidHubLink}" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            class="w-full inline-flex items-center justify-center gap-2 text-red-500 bg-white border-2 border-red-500 hover:bg-red-500 hover:text-white px-6 py-4 rounded-xl font-bold transition-all duration-300 shadow-sm hover:shadow-md group"
+                        >
+                            <span class="flex items-center gap-2">
+                                <i data-lucide="box" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                                VRoid Hubで見る
+                            </span>
+                        </a>
+                    `;
+                }
+
+                linksHtml += '</div>';
+            }
+
             return `
                 <div 
                     id="work-modal"
@@ -982,20 +1031,8 @@
                                     </div>
                                 </div>
 
-                                <!-- リンクボタン -->
-                                ${work.link && work.link !== '#' ? `
-                                    <div class="pt-6 border-t border-gray-100">
-                                        <a 
-                                            href="${work.link}" 
-                                            target="_blank" 
-                                            rel="noopener noreferrer"
-                                            class="w-full inline-flex items-center justify-center gap-2 text-white bg-gray-900 hover:bg-orange-500 px-6 py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl group"
-                                        >
-                                            関連リンクを見る
-                                            <i data-lucide="external-link" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
-                                        </a>
-                                    </div>
-                                ` : ''}
+                                <!-- リンクエリア -->
+                                ${linksHtml}
                             </div>
                         </div>
                     </div>

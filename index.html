@@ -113,6 +113,26 @@
             transform: scale(0.92);
             cursor: pointer; /* クリック可能であることを示す */
         }
+
+        /* ---------------------------------------------------- */
+        /* アニメーション用のカスタムCSS */
+        /* ---------------------------------------------------- */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* delay用のクラス（Tailwindのdelayと競合しないように） */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        .delay-400 { transition-delay: 400ms; }
+        .delay-500 { transition-delay: 500ms; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -128,7 +148,7 @@
         });
 
         // =================================================================
-        // データモデル (元のVtuberコンテンツ)
+        // データモデル
         // =================================================================
         const PROFILE_IMAGE_URL = 'https://pbs.twimg.com/profile_images/1940382517321777152/hEWt1GVI_400x400.jpg';
 
@@ -142,7 +162,6 @@
                 description: '女性らしい体つきを意識して制作しました。VRM,VRChat用でのセットアップを行いました。',
                 specs: ['MAYA', 'Unity', 'VRChat対応', 'パーフェクトシンク対応'],
                 link: 'https://x.com/Natorium_23/status/1851931662336340312/video/1',
-                // vroidHubLinkを設定するとボタンが表示されます
                 vroidHubLink: 'https://hub.vroid.com/characters/3869237375734873753/models/6454529233586532564', 
                 isPlaceholder: false
             },
@@ -155,7 +174,7 @@
                 description: 'イメージ画像の雰囲気に合わせるのを意識いたしました。エフェクトによる腕の表現やアニメーションによる形状の変化など工夫を多く行いました。',
                 specs: ['MAYA', 'Unity', ],
                 link: '#',
-                vroidHubLink: null, // リンクがない場合はnullまたは空文字
+                vroidHubLink: null,
                 isPlaceholder: false
             },
             { 
@@ -209,17 +228,89 @@
                 isPlaceholder: false
             },
             {
+                id: 6,
+                title: 'Vtuber Model "音ノ瀬らこ様"',
+                category: 'others',
+                image: 'https://lh3.googleusercontent.com/d/1_wx6r4MSlwMaoe9ddyKrDNniJUnZiSbb',
+                imageTpose: null,
+                description: 'ぷりん工房として仕上げをお手伝いいたしました。',
+                specs: ['MAYA', 'Unity'],
+                link: 'https://x.com/purin_kobo_cg/status/2055576609948905725?s=20',
+                vroidHubLink: null,
+                isPlaceholder: false
+            },
+            {
+                id: 7,
+                title: 'Vtuber Model "虹深°ぬふ様"',
+                category: 'others',
+                image: 'https://lh3.googleusercontent.com/d/1khU5pmSkb-f7HSIXqZe0fMecqJW46vgM',
+                imageTpose: null,
+                description: 'ぷりん工房として仕上げをお手伝いいたしました。',
+                specs: ['MAYA', 'Unity'],
+                link: 'https://x.com/purin_kobo_cg/status/2055576609948905725?s=20',
+                vroidHubLink: null,
+                isPlaceholder: false
+            },
+            {
+                id: 8,
+                title: 'Vtuber Model "眠雲ツクリ様"',
+                category: 'others',
+                image: 'https://lh3.googleusercontent.com/d/104i4Eh_vMQeEyDs-VNhTbWMjsDf8rxe8',
+                imageTpose: null,
+                description: 'ぷりん工房として仕上げをお手伝いいたしました。',
+                specs: ['MAYA', 'Unity'],
+                link: 'https://x.com/purin_kobo_cg/status/2055576609948905725?s=20',
+                vroidHubLink: null,
+                isPlaceholder: false
+            },
+            {
+                id: 9,
+                title: 'Vtuber Model "雨夜リズ様"',
+                category: 'others',
+                image: 'https://lh3.googleusercontent.com/d/1tN__OkGhcqOFQ3T-TtQBz3ryPuS9zVMj',
+                imageTpose: null,
+                description: 'ぷりん工房として仕上げをお手伝いいたしました。',
+                specs: ['MAYA', 'Unity'],
+                link: 'https://x.com/purin_kobo_cg/status/2055576609948905725?s=20',
+                vroidHubLink: null,
+                isPlaceholder: false
+            },
+            {
+                id: 10,
+                title: 'Vtuber Model "Ruon様"',
+                category: 'others',
+                image: 'https://lh3.googleusercontent.com/d/1H4fbdAwGSS0IHUP8mbS0J8nII5oC5lFI',
+                imageTpose: null,
+                description: 'セットアップ面でお手伝いをさせていただきました。',
+                specs: ['MAYA', 'Unity'],
+                link: 'https://x.com/hnnkbuta/status/2096524304251043876?s=20',
+                vroidHubLink: null,
+                isPlaceholder: false
+            },
+            {
+                id: 11,
+                title: 'Vtuber Model "宵吸あけル,天翔ドラコ,猫幻ミャオ様"',
+                category: 'others',
+                image: 'https://lh3.googleusercontent.com/d/1SbAoxQeyzPn8kRE7ELkKzql9IxLLp8f0',
+                imageTpose: null,
+                description: 'セットアップ面でお手伝いをさせていただきました。',
+                specs: ['MAYA', 'Unity'],
+                link: 'https://x.com/non_shopppp/status/1992897923349430701?s=20',
+                vroidHubLink: null,
+                isPlaceholder: false
+            },
+            /*{
                 id: 99,
                 title: 'Coming Soon...',
                 category: 'others',
                 image: 'https://placehold.co/400x533/E5E7EB/9CA3AF?text=Coming+Soon',
                 imageTpose: null,
-                description: '現在、その他のカテゴリの制作実績を準備中です。新しい作品が完成次第、公開いたします。',
+                description: '現在、制作協力のカテゴリの制作実績を準備中です。新しい作品が完成次第、公開いたします。', // 説明文も微修正
                 specs: [''],
                 isPlaceholder: true,
                 link: '#',
                 vroidHubLink: null
-            }
+            }*/
         ];
 
         const pricingData = [
@@ -281,7 +372,7 @@
             { id: 'all', name: '全て' },
             { id: 'character', name: 'ご依頼制作' }, 
             { id: 'fanmodel', name: 'ファンモデル' },
-            { id: 'others', name: 'その他' },
+            { id: 'others', name: '制作協力' }, // ★ 「その他」から変更
         ];
 
         // 料金をカンマ区切りにするヘルパー関数
@@ -315,7 +406,7 @@
         };
 
         const startAutoScroll = () => {
-            if (autoScrollInterval === null && !isUserScrolling && !selectedWork) {
+            if (autoScrollInterval === null && !isUserScrolling && !selectedWork && activeTab !== 'others') {
                 autoScrollInterval = setInterval(autoScrollToNext, AUTO_SCROLL_DELAY);
             }
         };
@@ -398,15 +489,28 @@
             clearTimeout(window.scrollResumeTimeout);
             window.scrollResumeTimeout = setTimeout(() => {
                 isUserScrolling = false;
-                startAutoScroll();
+                if (activeTab !== 'others') {
+                    startAutoScroll();
+                }
             }, 1500); // 操作後1.5秒で再開
         };
 
         // 作品クリック時のハンドラ
         const handleWorkClick = (index, workId, isPlaceholder) => {
-            // ユーザー操作として処理（自動スクロール制御など）
             handleUserInteraction();
 
+            // 「制作協力」タブのグリッド表示の場合は常にモーダルを開く
+            if (activeTab === 'others') {
+                if (!isPlaceholder) {
+                    const work = WORKS_DATA.find(w => w.id === workId);
+                    if (work) {
+                        openModal(work);
+                    }
+                }
+                return;
+            }
+
+            // カルーセル表示の場合の処理
             if (index === currentIndex) {
                 // 既に中央にある場合は詳細モーダルを開く
                 if (!isPlaceholder) {
@@ -442,10 +546,18 @@
         const setActiveTab = (tabId) => {
             activeTab = tabId;
             renderApp();
-            // タブ切り替え後に少し待ってから強調表示更新とスクロールリセット
+            
+            // タブ切り替え後の処理
             setTimeout(() => {
-                updateCarouselEmphasis();
-                scrollToIndex(0);
+                if (activeTab === 'others') {
+                    // 制作協力タブ（グリッド表示）の場合は自動スクロール停止
+                    pauseAutoScroll();
+                } else {
+                    // それ以外のタブ（カルーセル表示）の場合は再計算して再開
+                    updateCarouselEmphasis();
+                    scrollToIndex(0);
+                    startAutoScroll();
+                }
             }, 100);
         };
 
@@ -462,7 +574,9 @@
             selectedWork = null;
             activeModalImageKey = null;
             renderApp();
-            startAutoScroll(); // モーダルを閉じたら再開
+            if (activeTab !== 'others') {
+                startAutoScroll(); // モーダルを閉じたら再開（カルーセルの場合のみ）
+            }
         };
         
         const setActiveModalImage = (key) => {
@@ -476,9 +590,14 @@
 
         const Header = () => `
             <header class="fixed top-4 inset-x-4 md:inset-x-8 bg-white/80 backdrop-blur-md border border-white/50 z-50 h-16 shadow-lg rounded-full flex items-center justify-between px-6 md:px-8 transition-all duration-300">
-                <div class="text-xl font-black tracking-wider text-gray-900 flex items-center gap-2">
-                    <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
-                        <i data-lucide="box" class="text-white" style="width: 18px; height: 18px;"></i>
+                <div class="text-xl font-black tracking-wider text-gray-900 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-orange-200 shadow-sm shrink-0">
+                        <img 
+                            src="${PROFILE_IMAGE_URL}" 
+                            alt="Profile" 
+                            class="w-full h-full object-cover"
+                            onerror="this.onerror=null; this.src='https://placehold.co/100x100/EF4444/ffffff?text=Icon';"
+                        />
                     </div>
                     Natorium_23
                 </div>
@@ -521,23 +640,19 @@
         const Hero = () => `
             <section class="relative z-10 min-h-screen flex flex-col justify-center items-center px-6 pt-32 pb-16">
                 <div class="text-center max-w-4xl relative">
-                    <div class="mx-auto mb-10 w-36 h-36 md:w-48 md:h-48 bg-orange-100 rounded-full flex items-center justify-center border-4 border-orange-300 shadow-xl">
-                        <i data-lucide="user" class="text-orange-600" style="width: 80px; height: 80px;"></i>
-                    </div>
-
-                    <h2 class="text-gray-600 font-bold text-lg md:text-xl tracking-[0.1em] mb-4 uppercase">
+                    <h2 class="text-gray-600 font-bold text-lg md:text-xl tracking-[0.1em] mb-4 uppercase animate-on-scroll">
                         3D Character & Avatar Design
                     </h2>
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 tracking-tighter leading-tight relative">
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 mb-6 tracking-tighter leading-tight relative animate-on-scroll delay-100">
                         あなたの<span class="text-orange-500">３次元の夢</span>を形に
                     </h1>
-                    <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed mb-10 font-medium">
+                    <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed mb-10 font-medium animate-on-scroll delay-200">
                         ハイクオリティなVtuberモデル、VRChatアバター制作をお手伝いします。
                         <br class="hidden md:block"/>
                         「キャラクター」を意識したモデリングと丁寧なセットアップをお約束します。
                     </p>
                     
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll delay-300">
                         <button 
                             onclick="scrollToSection('works')"
                             class="group flex items-center justify-center gap-3 bg-gray-900 text-white px-8 py-3 rounded-full font-semibold text-lg hover:bg-gray-700 shadow-xl transition-all duration-300"
@@ -562,7 +677,7 @@
                 <div class="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                 <div class="relative">
                     <div class="flex flex-col md:flex-row gap-12 md:gap-16 items-center">
-                        <div class="w-48 h-48 md:w-72 md:h-72 bg-orange-100 shrink-0 flex items-center justify-center rounded-full border-[6px] border-white shadow-xl overflow-hidden relative group">
+                        <div class="w-48 h-48 md:w-72 md:h-72 bg-orange-100 shrink-0 flex items-center justify-center rounded-full border-[6px] border-white shadow-xl overflow-hidden relative group animate-on-scroll">
                             <img 
                                 src="${PROFILE_IMAGE_URL}" 
                                 alt="Natorium_23 Profile" 
@@ -572,17 +687,17 @@
                         </div>
                         
                         <div class="flex-1">
-                            <div class="flex items-center gap-4 mb-8">
+                            <div class="flex items-center gap-4 mb-8 animate-on-scroll delay-100">
                                 <div class="h-2 w-12 bg-orange-500 rounded-full"></div>
                                 <h3 class="text-4xl font-black text-gray-900">ABOUT ME</h3>
                             </div>
-                            <p class="text-gray-600 leading-loose mb-10 font-medium text-lg">
+                            <p class="text-gray-600 leading-loose mb-10 font-medium text-lg animate-on-scroll delay-200">
                                 フリーランスの3DCGデザイナーとして活動しています。<br/>
                                 主にMAYAやUnityを使用し、Vtuberモデルの制作からVRChat向けアバターのセットアップまで幅広く対応可能です。
                                 キャラクターの魅力を最大限に引き出す「かわいい」「かっこいい」造形と、破綻のない丁寧なリギングを心がけています。
                             </p>
                             
-                            <div class="grid grid-cols-1 gap-6 text-gray-600">
+                            <div class="grid grid-cols-1 gap-6 text-gray-600 animate-on-scroll delay-300">
                                 <div class="bg-orange-50/80 p-6 rounded-3xl border border-orange-100 shadow-sm">
                                     <span class="block text-orange-600 font-black text-sm uppercase mb-3 flex items-center gap-2">
                                         <i data-lucide="monitor" style="width: 16px; height: 16px;"></i> Main Tools
@@ -596,9 +711,14 @@
             </section>
         `;
 
-        const Works = () => `
+        const Works = () => {
+            const displayedWorks = WORKS_DATA.filter(work => activeTab === 'all' || work.category === activeTab);
+            // 「制作協力(others)」タブが選択されている場合はブロック状(グリッド)で表示する
+            const isGridMode = activeTab === 'others';
+
+            return `
             <section id="works" class="relative z-10 py-24 px-0 max-w-full mx-auto overflow-hidden">
-                <div class="flex flex-col items-center mb-10 px-6 max-w-6xl mx-auto">
+                <div class="flex flex-col items-center mb-10 px-6 max-w-6xl mx-auto animate-on-scroll">
                     <h3 class="text-5xl font-black text-gray-900 mb-10 text-center relative inline-block">
                         WORKS
                         <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-24 h-2 bg-orange-500 rounded-full"></span>
@@ -620,64 +740,113 @@
                     </div>
                 </div>
 
-                <!-- カルーセルコンテナ -->
-                <div id="works-carousel" class="works-carousel -mx-4">
-                    ${WORKS_DATA.filter(work => activeTab === 'all' || work.category === activeTab).map((work, index) => `
-                        <div class="work-card-container px-4">
-                            <div 
-                                onclick="handleWorkClick(${index}, ${work.id}, ${work.isPlaceholder})" 
-                                class="work-card group relative aspect-3-4 bg-white rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300 border border-white/50 ${
-                                    work.isPlaceholder 
-                                        ? 'cursor-default bg-gray-50'
-                                        : 'cursor-pointer hover:shadow-xl'
-                                }"
-                            >
-                                <img 
-                                    src="${work.image}" 
-                                    alt="${work.title}" 
-                                    class="w-full h-full object-cover transition-transform duration-500 ${
-                                        work.isPlaceholder ? 'opacity-50' : 'group-hover:scale-110 group-hover:rotate-1'
+                ${isGridMode ? `
+                    <!-- ブロック状(グリッド)レイアウト: 制作協力タブ用 -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-6 mt-12">
+                        ${displayedWorks.map((work, index) => `
+                            <div class="w-full animate-on-scroll delay-${(index % 3 + 1) * 100}">
+                                <div 
+                                    onclick="handleWorkClick(${index}, ${work.id}, ${work.isPlaceholder})" 
+                                    class="work-card group relative aspect-3-4 bg-white rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300 border border-white/50 ${
+                                        work.isPlaceholder 
+                                            ? 'cursor-default bg-gray-50'
+                                            : 'cursor-pointer hover:shadow-xl hover:-translate-y-2'
                                     }"
-                                    onerror="this.onerror=null; this.src='https://placehold.co/400x533/EF4444/ffffff?text=Image+Error';"
-                                />
-                                
-                                ${work.isPlaceholder ? `
-                                    <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-gray-500">
-                                        <i data-lucide="clock" class="text-gray-400 mb-4" style="width: 48px; height: 48px;"></i>
-                                        <h4 class="text-2xl font-black text-gray-600">${work.title}</h4>
-                                        <p class="text-center text-sm mt-2">実績追加までしばらくお待ちください</p>
-                                    </div>
-                                ` : `
-                                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    <div class="absolute bottom-0 left-0 w-full p-6 translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                        <span class="text-xs font-bold bg-white text-orange-500 px-3 py-1 mb-2 inline-block rounded-full uppercase shadow-sm tracking-wider">
-                                            ${filterTabs.find(t => t.id === work.category)?.name || work.category}
-                                        </span>
-                                        <h4 class="text-xl font-black text-white drop-shadow-md">${work.title}</h4>
-                                    </div>
-                                    <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 scale-50 group-hover:scale-100">
-                                        <div class="bg-white/30 backdrop-blur-md p-3 rounded-full shadow-sm hover:bg-white/50 transition-colors">
-                                            <i data-lucide="external-link" class="text-white" style="width: 20px; height: 20px;"></i>
+                                >
+                                    <img 
+                                        src="${work.image}" 
+                                        alt="${work.title}" 
+                                        class="w-full h-full object-cover transition-transform duration-500 ${
+                                            work.isPlaceholder ? 'opacity-50' : 'group-hover:scale-110'
+                                        }"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/400x533/EF4444/ffffff?text=Image+Error';"
+                                    />
+                                    
+                                    ${work.isPlaceholder ? `
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-gray-500 bg-gray-100/50 backdrop-blur-sm">
+                                            <i data-lucide="clock" class="text-gray-400 mb-4" style="width: 48px; height: 48px;"></i>
+                                            <h4 class="text-2xl font-black text-gray-600">${work.title}</h4>
+                                            <p class="text-center text-sm mt-2 font-medium leading-relaxed">実績追加まで<br/>しばらくお待ちください</p>
                                         </div>
-                                    </div>
-                                `}
+                                    ` : `
+                                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <div class="absolute bottom-0 left-0 w-full p-6 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out opacity-0 group-hover:opacity-100">
+                                            <span class="text-xs font-bold bg-white text-orange-500 px-3 py-1 mb-2 inline-block rounded-full uppercase shadow-sm tracking-wider">
+                                                ${filterTabs.find(t => t.id === work.category)?.name || work.category}
+                                            </span>
+                                            <h4 class="text-xl font-black text-white drop-shadow-md">${work.title}</h4>
+                                        </div>
+                                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 scale-50 group-hover:scale-100">
+                                            <div class="bg-white/30 backdrop-blur-md p-3 rounded-full shadow-sm hover:bg-white/50 transition-colors">
+                                                <i data-lucide="external-link" class="text-white" style="width: 20px; height: 20px;"></i>
+                                            </div>
+                                        </div>
+                                    `}
+                                </div>
                             </div>
-                        </div>
-                    `).join('')}
-                </div>
-                
-                <!-- スクロールナビゲーションヒント -->
-                 <div class="text-center mt-8 text-gray-400 text-sm animate-pulse">
-                    <i data-lucide="move-horizontal" class="inline-block mr-1 w-4 h-4"></i> スクロール、またはタップして作品を見る
-                </div>
+                        `).join('')}
+                    </div>
+                ` : `
+                    <!-- カルーセルレイアウト: その他のタブ用 -->
+                    <div id="works-carousel" class="works-carousel -mx-4 animate-on-scroll delay-100">
+                        ${displayedWorks.map((work, index) => `
+                            <div class="work-card-container px-4">
+                                <div 
+                                    onclick="handleWorkClick(${index}, ${work.id}, ${work.isPlaceholder})" 
+                                    class="work-card group relative aspect-3-4 bg-white rounded-[2rem] overflow-hidden shadow-lg transition-all duration-300 border border-white/50 ${
+                                        work.isPlaceholder 
+                                            ? 'cursor-default bg-gray-50'
+                                            : 'cursor-pointer hover:shadow-xl'
+                                    }"
+                                >
+                                    <img 
+                                        src="${work.image}" 
+                                        alt="${work.title}" 
+                                        class="w-full h-full object-cover transition-transform duration-500 ${
+                                            work.isPlaceholder ? 'opacity-50' : 'group-hover:scale-110 group-hover:rotate-1'
+                                        }"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/400x533/EF4444/ffffff?text=Image+Error';"
+                                    />
+                                    
+                                    ${work.isPlaceholder ? `
+                                        <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-gray-500 bg-gray-100/50 backdrop-blur-sm">
+                                            <i data-lucide="clock" class="text-gray-400 mb-4" style="width: 48px; height: 48px;"></i>
+                                            <h4 class="text-2xl font-black text-gray-600">${work.title}</h4>
+                                            <p class="text-center text-sm mt-2 font-medium leading-relaxed">実績追加まで<br/>しばらくお待ちください</p>
+                                        </div>
+                                    ` : `
+                                        <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                        <div class="absolute bottom-0 left-0 w-full p-6 translate-y-8 group-hover:translate-y-0 transition-transform duration-500 ease-out">
+                                            <span class="text-xs font-bold bg-white text-orange-500 px-3 py-1 mb-2 inline-block rounded-full uppercase shadow-sm tracking-wider">
+                                                ${filterTabs.find(t => t.id === work.category)?.name || work.category}
+                                            </span>
+                                            <h4 class="text-xl font-black text-white drop-shadow-md">${work.title}</h4>
+                                        </div>
+                                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100 scale-50 group-hover:scale-100">
+                                            <div class="bg-white/30 backdrop-blur-md p-3 rounded-full shadow-sm hover:bg-white/50 transition-colors">
+                                                <i data-lucide="external-link" class="text-white" style="width: 20px; height: 20px;"></i>
+                                            </div>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <!-- スクロールナビゲーションヒント -->
+                    <div class="text-center mt-8 text-gray-400 text-sm animate-pulse animate-on-scroll delay-200">
+                        <i data-lucide="move-horizontal" class="inline-block mr-1 w-4 h-4"></i> スクロール、またはタップして作品を見る
+                    </div>
+                `}
 
             </section>
-        `;
+            `;
+        };
 
         const Price = () => `
             <section id="price" class="relative z-10 py-24 bg-white my-12 md:my-24 mx-4 md:mx-auto max-w-6xl rounded-[3rem] shadow-xl border border-white/50 px-8 md:px-16 overflow-hidden">
                 <div class="relative">
-                    <div class="text-center mb-16">
+                    <div class="text-center mb-16 animate-on-scroll">
                         <h3 class="text-5xl font-black text-gray-900 mb-4 relative inline-block">
                             PRICE
                             <span class="absolute -bottom-3 left-0 w-full h-2 bg-orange-500 rounded-full"></span>
@@ -687,12 +856,12 @@
                         </p>
                     </div>
 
-                    <h4 class="text-2xl font-black text-gray-900 mb-6 border-b pb-2 border-orange-200 flex items-center gap-2">
+                    <h4 class="text-2xl font-black text-gray-900 mb-6 border-b pb-2 border-orange-200 flex items-center gap-2 animate-on-scroll delay-100">
                         <span class="text-orange-500">I.</span> ベース制作プラン
                     </h4>
                     <div class="space-y-6 max-w-3xl mx-auto mb-16">
-                        ${pricingData.map(item => `
-                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-gray-50 rounded-2xl border-l-4 border-orange-500 shadow-md transition-shadow hover:shadow-lg">
+                        ${pricingData.map((item, index) => `
+                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-gray-50 rounded-2xl border-l-4 border-orange-500 shadow-md transition-shadow hover:shadow-lg animate-on-scroll delay-${(index % 4 + 1) * 100}">
                                 <div class="text-left mb-2 md:mb-0">
                                     <h4 class="text-xl font-bold text-gray-800">${item.item}</h4>
                                     <p class="text-sm text-gray-500 mt-1">${item.notes}</p>
@@ -706,12 +875,12 @@
                         `).join('')}
                     </div>
                     
-                    <h4 class="text-2xl font-black text-gray-900 mb-6 border-b pb-2 border-orange-200 flex items-center gap-2">
+                    <h4 class="text-2xl font-black text-gray-900 mb-6 border-b pb-2 border-orange-200 flex items-center gap-2 animate-on-scroll delay-100">
                         <span class="text-orange-500">II.</span> 追加オプション代
                     </h4>
                     <div class="space-y-6 max-w-3xl mx-auto">
-                        ${optionalPricingData.map(item => `
-                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-orange-50 rounded-2xl border-l-4 border-pink-500 shadow-md transition-shadow hover:shadow-lg">
+                        ${optionalPricingData.map((item, index) => `
+                            <div class="flex flex-col md:flex-row items-start md:items-center justify-between p-6 bg-orange-50 rounded-2xl border-l-4 border-pink-500 shadow-md transition-shadow hover:shadow-lg animate-on-scroll delay-${(index % 4 + 1) * 100}">
                                 <div class="text-left mb-2 md:mb-0">
                                     <h4 class="text-xl font-bold text-gray-800 flex items-center gap-2">
                                         <i data-lucide="plus-circle" class="text-pink-500" style="width: 20px; height: 20px;"></i>
@@ -728,7 +897,7 @@
                         `).join('')}
                     </div>
 
-                    <div class="mt-12 text-center text-gray-500 text-sm italic">
+                    <div class="mt-12 text-center text-gray-500 text-sm italic animate-on-scroll delay-300">
                         <p>* 上記は目安の料金です。デザインの複雑さ、パーツ数、リギングの精度により変動します。</p>
                         <p>* 詳細なご依頼内容に基づき、個別にお見積りを作成いたしますので、まずはお問い合わせください。</p>
                     </div>
@@ -742,7 +911,7 @@
                 <div class="absolute bottom-0 right-0 w-96 h-96 bg-pink-200/40 rounded-full blur-3xl translate-x-1/2 translate-y-1/2 pointer-events-none"></div>
 
                 <div class="relative">
-                    <div class="text-center mb-20">
+                    <div class="text-center mb-20 animate-on-scroll">
                         <h3 class="text-5xl font-black text-gray-900 mb-4 relative inline-block">
                             WORKFLOW
                             <span class="absolute -bottom-3 left-0 w-full h-2 bg-orange-500 rounded-full"></span>
@@ -758,7 +927,7 @@
                             ${workflowSteps.map((item, index) => `
                                 <div class="relative flex flex-col md:flex-row gap-8 items-center ${
                                     index % 2 === 0 ? 'md:flex-row-reverse' : ''
-                                }">
+                                } animate-on-scroll delay-100">
                                     <div class="absolute left-8 md:left-1/2 -translate-x-1/2 w-20 h-20 bg-gradient-to-br from-orange-400 to-pink-500 border-[6px] border-white shadow-lg flex items-center justify-center rounded-full z-10 shrink-0">
                                         <i data-lucide="${item.icon}" class="text-white drop-shadow-sm" style="width: 24px; height: 24px;"></i>
                                     </div>
@@ -790,28 +959,28 @@
 
         const Contact = () => `
             <section id="contact" class="relative z-10 py-24 px-6 max-w-5xl mx-auto text-center">
-                <h3 class="text-5xl font-black text-gray-900 mb-10 relative inline-block">
+                <h3 class="text-5xl font-black text-gray-900 mb-10 relative inline-block animate-on-scroll">
                     CONTACT
                     <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 w-24 h-2 bg-orange-500 rounded-full"></span>
                 </h3>
-                <p class="text-gray-600 mb-16 leading-relaxed font-medium text-xl max-w-3xl mx-auto">
+                <p class="text-gray-600 mb-16 leading-relaxed font-medium text-xl max-w-3xl mx-auto animate-on-scroll delay-100">
                     制作のご依頼、お見積り、ご相談などお気軽にご連絡ください。<br/>
                     ご依頼をお待ちしています！
                 </p>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
                     <!-- X (旧Twitter) -->
-                    <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="x-button flex flex-col items-center justify-center p-10 bg-white rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 group transition-all duration-300 relative overflow-hidden">
+                    <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="x-button flex flex-col items-center justify-center p-10 bg-white rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 group transition-all duration-300 relative overflow-hidden animate-on-scroll delay-100">
                         <div class="absolute inset-0 bg-gradient-to-br from-gray-900/0 to-gray-900/0 group-hover:from-gray-900/10 group-hover:to-white transition-all duration-300"></div>
-                        <div class="bg-gray-100 p-5 rounded-full mb-6 group-hover:bg-gray-900 group-hover:scale-110 transition-all shadow-sm relative z-10">
-                            <i data-lucide="twitter" class="lucide-twitter group-hover:text-white transition-colors" style="width: 40px; height: 40px;"></i>
+                        <div class="bg-gray-100 p-2 w-20 h-20 rounded-full mb-6 group-hover:bg-gray-900 group-hover:scale-110 transition-all shadow-sm relative z-10 flex items-center justify-center overflow-hidden">
+                            <img src="${PROFILE_IMAGE_URL}" alt="X Profile" class="w-full h-full object-cover rounded-full group-hover:opacity-90 transition-opacity" />
                         </div>
                         <span class="font-black text-xl text-gray-900 relative z-10">X</span>
                         <span class="text-base text-gray-500 mt-2 font-medium relative z-10">@Natorium_23 / DM Open</span>
                     </a>
 
                     <!-- Email -->
-                    <a href="mailto:natorium23cg@gmail.com" class="flex flex-col items-center justify-center p-10 bg-white rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 group transition-all duration-300 relative overflow-hidden">
+                    <a href="mailto:natorium23cg@gmail.com" class="flex flex-col items-center justify-center p-10 bg-white rounded-[2.5rem] border border-gray-100 shadow-lg hover:shadow-xl hover:-translate-y-2 group transition-all duration-300 relative overflow-hidden animate-on-scroll delay-200">
                         <div class="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-orange-500/0 group-hover:from-orange-500/10 group-hover:to-white transition-all duration-300"></div>
                         <div class="bg-orange-50 p-5 rounded-full mb-6 group-hover:bg-orange-500 group-hover:scale-110 transition-all shadow-sm relative z-10">
                             <i data-lucide="mail" class="text-orange-500 group-hover:text-white transition-colors" style="width: 40px; height: 40px;"></i>
@@ -821,7 +990,7 @@
                     </a>
                 </div>
                 
-                <div class="bg-white p-10 md:p-16 rounded-[3rem] border border-gray-100 text-left max-w-4xl mx-auto shadow-xl relative overflow-hidden">
+                <div class="bg-white p-10 md:p-16 rounded-[3rem] border border-gray-100 text-left max-w-4xl mx-auto shadow-xl relative overflow-hidden animate-on-scroll delay-300">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-orange-50 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
                     <div class="relative z-10">
                         <h4 class="text-gray-900 font-black mb-8 text-2xl flex items-center gap-3">
@@ -1044,6 +1213,25 @@
         // Main Render Function
         // ====================================================================
 
+        const initScrollAnimations = () => {
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target); // 一度アニメーションしたら監視を解除
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px 0px -50px 0px',
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+                observer.observe(el);
+            });
+        };
+
         const renderApp = () => {
             const app = document.getElementById('root');
             if (!app) return;
@@ -1098,9 +1286,14 @@
                 // 初期ロード時の処理
                 setTimeout(() => {
                     updateCarouselEmphasis();
-                    startAutoScroll(); 
+                    if (activeTab !== 'others') {
+                        startAutoScroll(); 
+                    }
                 }, 100); 
             }
+
+            // スクロールアニメーションの初期化・再設定
+            initScrollAnimations();
         };
 
         // 初期描画

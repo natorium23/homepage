@@ -138,6 +138,7 @@
 <body class="bg-gray-50 text-gray-800">
 
     <div id="root"></div>
+    <div id="modal-root"></div>
 
     <script>
         // Lucideアイコンの初期化（HTMLでの使用のため）
@@ -533,32 +534,21 @@
             const element = document.getElementById(id);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
-                isMenuOpen = false;
-                renderApp();
+                if (isMenuOpen) {
+                    isMenuOpen = false;
+                    renderHeader();
+                }
             }
         };
 
         const toggleMenu = () => {
             isMenuOpen = !isMenuOpen;
-            renderApp();
+            renderHeader();
         };
 
         const setActiveTab = (tabId) => {
             activeTab = tabId;
-            renderApp();
-            
-            // タブ切り替え後の処理
-            setTimeout(() => {
-                if (activeTab === 'others') {
-                    // 制作協力タブ（グリッド表示）の場合は自動スクロール停止
-                    pauseAutoScroll();
-                } else {
-                    // それ以外のタブ（カルーセル表示）の場合は再計算して再開
-                    updateCarouselEmphasis();
-                    scrollToIndex(0);
-                    startAutoScroll();
-                }
-            }, 100);
+            renderWorks();
         };
 
         const openModal = (work) => {
@@ -566,14 +556,14 @@
                 pauseAutoScroll(); // モーダル表示中は自動スクロール停止
                 selectedWork = work;
                 activeModalImageKey = 'main'; 
-                renderApp();
+                renderModal();
             }
         };
 
         const closeModal = () => {
             selectedWork = null;
             activeModalImageKey = null;
-            renderApp();
+            renderModal();
             if (activeTab !== 'others') {
                 startAutoScroll(); // モーダルを閉じたら再開（カルーセルの場合のみ）
             }
@@ -581,7 +571,50 @@
         
         const setActiveModalImage = (key) => {
             activeModalImageKey = key;
-            renderApp();
+            renderModal();
+        };
+
+        // ====================================================================
+        // Partial Render Functions
+        // ====================================================================
+
+        const renderHeader = () => {
+            const header = document.getElementById('site-header');
+            if (header) {
+                header.outerHTML = Header();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+        };
+
+        const renderWorks = () => {
+            const worksSection = document.getElementById('works');
+            if (worksSection) {
+                worksSection.outerHTML = Works();
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+                initCarousel();
+                initScrollAnimations();
+                
+                // タブ切り替え後の処理
+                setTimeout(() => {
+                    if (activeTab === 'others') {
+                        // 制作協力タブ（グリッド表示）の場合は自動スクロール停止
+                        pauseAutoScroll();
+                    } else {
+                        // それ以外のタブ（カルーセル表示）の場合は再計算して再開
+                        updateCarouselEmphasis();
+                        scrollToIndex(0);
+                        startAutoScroll();
+                    }
+                }, 100);
+            }
+        };
+
+        const renderModal = () => {
+            const modalRoot = document.getElementById('modal-root');
+            if (modalRoot) {
+                modalRoot.innerHTML = WorkModal(selectedWork);
+                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
         };
 
         // ====================================================================
@@ -589,7 +622,7 @@
         // ====================================================================
 
         const Header = () => `
-            <header class="fixed top-4 inset-x-4 md:inset-x-8 bg-white/80 backdrop-blur-md border border-white/50 z-50 h-16 shadow-lg rounded-full flex items-center justify-between px-6 md:px-8 transition-all duration-300">
+            <header id="site-header" class="fixed top-4 inset-x-4 md:inset-x-8 bg-white/80 backdrop-blur-md border border-white/50 z-50 h-16 shadow-lg rounded-full flex items-center justify-between px-6 md:px-8 transition-all duration-300">
                 <div class="text-xl font-black tracking-wider text-gray-900 flex items-center gap-3">
                     <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-orange-200 shadow-sm shrink-0">
                         <img 
@@ -1227,9 +1260,47 @@
                 threshold: 0.1
             });
 
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            // まだis-visibleが付与されていない要素のみを監視対象にする
+            document.querySelectorAll('.animate-on-scroll:not(.is-visible)').forEach(el => {
                 observer.observe(el);
             });
+        };
+
+        const initCarousel = () => {
+            const carousel = document.getElementById('works-carousel');
+            if (carousel) {
+                // スクロール時とリサイズ時に中央強調を更新
+                const updateOnScroll = () => {
+                    // スクロールが停止した後に実行されるようにデバウンス
+                    clearTimeout(carousel.scrollTimeout);
+                    carousel.scrollTimeout = setTimeout(updateCarouselEmphasis, 50);
+                };
+
+                // 古いリスナーを削除してから追加（部分レンダリング時の重複防止）
+                carousel.removeEventListener('scroll', updateOnScroll);
+                carousel.addEventListener('scroll', updateOnScroll);
+                
+                window.removeEventListener('resize', updateCarouselEmphasis);
+                window.addEventListener('resize', updateCarouselEmphasis);
+                
+                // ユーザー操作を検知して自動スクロールを一時停止/再開
+                carousel.removeEventListener('mousedown', handleUserInteraction);
+                carousel.addEventListener('mousedown', handleUserInteraction);
+                
+                carousel.removeEventListener('touchstart', handleUserInteraction);
+                carousel.addEventListener('touchstart', handleUserInteraction);
+                
+                carousel.removeEventListener('wheel', handleUserInteraction);
+                carousel.addEventListener('wheel', handleUserInteraction);
+                
+                // 初期ロード時の処理
+                setTimeout(() => {
+                    updateCarouselEmphasis();
+                    if (activeTab !== 'others') {
+                        startAutoScroll(); 
+                    }
+                }, 100); 
+            }
         };
 
         const renderApp = () => {
@@ -1257,8 +1328,10 @@
                     ${Contact()}
                     ${Footer()}
                 </div>
-                ${WorkModal(selectedWork)}
             `;
+            
+            // 初回のモーダル用コンテナの中身を設定（空）
+            renderModal();
 
             // Lucideアイコンを再作成
             if (typeof lucide !== 'undefined') {
@@ -1266,31 +1339,7 @@
             }
 
             // カルーセル制御の初期化
-            const carousel = document.getElementById('works-carousel');
-            if (carousel) {
-                // スクロール時とリサイズ時に中央強調を更新
-                const updateOnScroll = () => {
-                    // スクロールが停止した後に実行されるようにデバウンス
-                    clearTimeout(carousel.scrollTimeout);
-                    carousel.scrollTimeout = setTimeout(updateCarouselEmphasis, 50);
-                };
-
-                carousel.addEventListener('scroll', updateOnScroll);
-                window.addEventListener('resize', updateCarouselEmphasis);
-                
-                // ユーザー操作を検知して自動スクロールを一時停止/再開
-                carousel.addEventListener('mousedown', handleUserInteraction);
-                carousel.addEventListener('touchstart', handleUserInteraction);
-                carousel.addEventListener('wheel', handleUserInteraction);
-                
-                // 初期ロード時の処理
-                setTimeout(() => {
-                    updateCarouselEmphasis();
-                    if (activeTab !== 'others') {
-                        startAutoScroll(); 
-                    }
-                }, 100); 
-            }
+            initCarousel();
 
             // スクロールアニメーションの初期化・再設定
             initScrollAnimations();

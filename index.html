@@ -137,6 +137,21 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
+    <!-- ローディングスクリーン -->
+    <div id="loading-screen" class="fixed inset-0 z-[9999] bg-white flex flex-col items-center justify-center transition-all duration-700 ease-in-out">
+        <div class="relative flex flex-col items-center">
+            <div class="text-7xl md:text-9xl font-black text-gray-900 tracking-tighter mb-4 flex items-baseline">
+                <span id="loading-number">0</span><span class="text-4xl md:text-6xl text-orange-500 ml-2">%</span>
+            </div>
+            <div class="w-64 h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div id="loading-bar" class="h-full bg-orange-500 w-0 transition-all duration-75"></div>
+            </div>
+            <div class="mt-6 text-sm font-bold text-gray-400 tracking-widest uppercase animate-pulse">
+                Loading Portfolio
+            </div>
+        </div>
+    </div>
+
     <div id="root"></div>
     <div id="modal-root"></div>
 
@@ -1346,7 +1361,59 @@
         };
 
         // 初期描画
-        document.addEventListener('DOMContentLoaded', renderApp);
+        // document.addEventListener('DOMContentLoaded', renderApp); // ← 削除対象
+
+        // ====================================================================
+        // Loading Animation
+        // ====================================================================
+        const startLoadingAnimation = () => {
+            // ローディング中はスクロールを禁止し、一番上に固定
+            document.body.style.overflow = 'hidden'; 
+            window.scrollTo(0, 0); 
+
+            const loadingScreen = document.getElementById('loading-screen');
+            const numberElement = document.getElementById('loading-number');
+            const barElement = document.getElementById('loading-bar');
+            
+            let currentNumber = 0;
+            
+            const counter = setInterval(() => {
+                // 増分をさらに小さくして、アニメーションをゆっくりに調整
+                let increment = (Math.random() * 3 + 0.5) * 0.4; 
+                // 80%以降はさらにじわじわと増えるように調整
+                if (currentNumber > 80) increment = (Math.random() * 1.0 + 0.2) * 0.4; 
+                
+                currentNumber += increment;
+
+                if (currentNumber >= 100) {
+                    currentNumber = 100;
+                    clearInterval(counter);
+                    
+                    numberElement.textContent = 100;
+                    barElement.style.width = '100%';
+
+                    // 100%達成後、少し待機してからスライドアップ＆フェードアウト
+                    setTimeout(() => {
+                        loadingScreen.classList.add('opacity-0', '-translate-y-full');
+                        
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            // ローディング画面が消えたらスクロールを許可
+                            document.body.style.overflow = ''; 
+                        }, 700); 
+                    }, 400);
+                } else {
+                    // 小数点以下を切り捨てて表示
+                    numberElement.textContent = Math.floor(currentNumber);
+                    barElement.style.width = `${currentNumber}%`;
+                }
+            }, 30); // 30msごとに数値を更新
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderApp();
+            startLoadingAnimation();
+        });
     </script>
 </body>
 </html>

@@ -6,33 +6,27 @@
     <title>Natorium_23 | 3DCG Character & Avatar Designer Portfolio</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <!-- Google Fonts: Inter & Noto Sans JP (人気の定番Webフォント) -->
+    <!-- Google Fonts: Outfit, Zen Kaku Gothic New & Material Symbols Outlined (公式Googleアイコン) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
 
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
-                        display: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
-                        mono: ['"Inter"', '"Noto Sans JP"', 'sans-serif'],
+                        sans: ['"Outfit"', '"Zen Kaku Gothic New"', 'sans-serif'],
+                        display: ['"Outfit"', '"Zen Kaku Gothic New"', 'sans-serif'],
+                        mono: ['"Outfit"', '"Zen Kaku Gothic New"', 'sans-serif'],
                     },
-                    colors: {
-                        brand: {
-                            50: '#fff7ed',
-                            100: '#ffedd5',
-                            200: '#fed7aa',
-                            300: '#fdba74',
-                            400: '#fb923c',
-                            500: '#ea580c',
-                            600: '#c2410c',
-                            900: '#1c1917',
-                        }
+                    borderRadius: {
+                        'md-xs': '4px',
+                        'md-sm': '8px',
+                        'md-md': '12px',
+                        'md-lg': '16px',
+                        'md-xl': '28px',
                     }
                 }
             }
@@ -40,29 +34,152 @@
     </script>
 
     <style>
+        /* =================================================================
+           Material Design 3 White-Based Clean Color Tokens
+           ================================================================= */
         :root {
-            --accent: #ea580c;
-            --dark: #1c1917;
+            --md-sys-color-primary: #c2410c;
+            --md-sys-color-on-primary: #ffffff;
+            --md-sys-color-primary-container: #ffedd5;
+            --md-sys-color-on-primary-container: #431407;
+
+            --md-sys-color-secondary: #57534e;
+            --md-sys-color-on-secondary: #ffffff;
+            --md-sys-color-secondary-container: #f5f5f4;
+            --md-sys-color-on-secondary-container: #1c1917;
+
+            --md-sys-color-tertiary: #ea580c;
+            --md-sys-color-on-tertiary: #ffffff;
+            --md-sys-color-tertiary-container: #ffedd5;
+            --md-sys-color-on-tertiary-container: #431407;
+
+            --md-sys-color-background: #ffffff;
+            --md-sys-color-on-background: #0c0a09;
+            --md-sys-color-surface: #ffffff;
+            --md-sys-color-surface-dim: #f5f5f4;
+            --md-sys-color-surface-bright: #ffffff;
+            --md-sys-color-surface-container-lowest: #ffffff;
+            --md-sys-color-surface-container-low: #fafafa;
+            --md-sys-color-surface-container: #f5f5f4;
+            --md-sys-color-surface-container-high: #efeeec;
+            --md-sys-color-surface-container-highest: #e7e5e4;
+
+            --md-sys-color-on-surface: #0c0a09;
+            --md-sys-color-on-surface-variant: #292524;
+            --md-sys-color-outline: #78716c;
+            --md-sys-color-outline-variant: #d6d3d1;
+
+            --md-sys-color-inverse-surface: #1c1917;
+            --md-sys-color-inverse-on-surface: #fafaf9;
+            --md-sys-color-inverse-primary: #fdba74;
+
+            /* Elevation Shadows (M3 Standard Clean White Surface Shadows) */
+            --md-sys-elevation-1: 0px 1px 3px rgba(0, 0, 0, 0.06), 0px 1px 2px rgba(0, 0, 0, 0.04);
+            --md-sys-elevation-2: 0px 4px 8px -2px rgba(0, 0, 0, 0.08), 0px 2px 4px -2px rgba(0, 0, 0, 0.04);
+            --md-sys-elevation-3: 0px 10px 20px -5px rgba(0, 0, 0, 0.08), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --md-sys-elevation-4: 0px 20px 25px -5px rgba(0, 0, 0, 0.10), 0px 8px 10px -6px rgba(0, 0, 0, 0.06);
         }
 
+        /* =================================================================
+           Base & Utility Classes Mapped to Material Design 3 Tokens
+           ================================================================= */
         body {
-            font-family: 'Inter', 'Noto Sans JP', sans-serif;
-            background-color: #fafaf9;
-            color: #1c1917;
+            font-family: 'Outfit', 'Zen Kaku Gothic New', sans-serif;
+            font-weight: 500;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
             overflow-x: hidden;
+            letter-spacing: 0.01em;
+        }
+
+        /* Zen Kaku Gothic New が細く見えないよう標準ウェイトを底上げ */
+        .font-normal {
+            font-weight: 500 !important;
+        }
+        .font-medium {
+            font-weight: 700 !important;
         }
 
         ::selection {
-            background: #fed7aa;
-            color: #1c1917;
+            background: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
         }
 
-        /* 控えめで上品なドット＆グリッド背景 */
-        .studio-grid-bg {
-            background-size: 40px 40px;
-            background-image: 
-                linear-gradient(to right, rgba(28, 25, 23, 0.025) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(28, 25, 23, 0.025) 1px, transparent 1px);
+        /* Material Symbols Default Settings */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+            user-select: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            vertical-align: middle;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+        }
+
+        /* M3 Color Utilities */
+        .md-bg-surface { background-color: var(--md-sys-color-surface); }
+        .md-bg-surface-lowest { background-color: var(--md-sys-color-surface-container-lowest); }
+        .md-bg-surface-low { background-color: var(--md-sys-color-surface-container-low); }
+        .md-bg-surface-container { background-color: var(--md-sys-color-surface-container); }
+        .md-bg-surface-high { background-color: var(--md-sys-color-surface-container-high); }
+        .md-bg-surface-highest { background-color: var(--md-sys-color-surface-container-highest); }
+
+        .md-bg-primary { background-color: var(--md-sys-color-primary); color: var(--md-sys-color-on-primary); }
+        .md-bg-primary-container { background-color: var(--md-sys-color-primary-container); color: var(--md-sys-color-on-primary-container); }
+        .md-bg-secondary-container { background-color: var(--md-sys-color-secondary-container); color: var(--md-sys-color-on-secondary-container); }
+        .md-bg-tertiary-container { background-color: var(--md-sys-color-tertiary-container); color: var(--md-sys-color-on-tertiary-container); }
+
+        .md-text-primary { color: var(--md-sys-color-primary); }
+        .md-text-on-surface { color: var(--md-sys-color-on-surface); }
+        .md-text-on-surface-variant { color: var(--md-sys-color-on-surface-variant); }
+        .md-border-outline { border-color: var(--md-sys-color-outline); }
+        .md-border-outline-variant { border-color: var(--md-sys-color-outline-variant); }
+
+        /* M3 Elevation Utilities */
+        .md-elevation-1 { box-shadow: var(--md-sys-elevation-1); }
+        .md-elevation-2 { box-shadow: var(--md-sys-elevation-2); }
+        .md-elevation-3 { box-shadow: var(--md-sys-elevation-3); }
+        .md-elevation-4 { box-shadow: var(--md-sys-elevation-4); }
+
+        /* M3 State Layer & Ripple Effect */
+        .md-interactive {
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1), background-color 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
+        .md-interactive::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: currentColor;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
+        .md-interactive:hover::after {
+            opacity: 0.08;
+        }
+        .md-interactive:active::after {
+            opacity: 0.12;
+        }
+
+        /* Authentic Material Ripple Element */
+        span.md-ripple {
+            position: absolute;
+            border-radius: 50%;
+            transform: scale(0);
+            animation: md-ripple-anim 600ms cubic-bezier(0.2, 0, 0, 1);
+            background-color: currentColor;
+            opacity: 0.18;
+            pointer-events: none;
+        }
+        @keyframes md-ripple-anim {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
         }
 
         /* Aspect Ratio Helper */
@@ -70,7 +187,7 @@
             aspect-ratio: 3 / 4;
         }
 
-        /* ヒーローセクション：右から左へ流れるアニメーション */
+        /* M3 Hero Carousel Flow Animation */
         @keyframes heroFlowLeft {
             0% { transform: translateX(0%); }
             100% { transform: translateX(-50%); }
@@ -78,112 +195,105 @@
         .animate-hero-flow {
             display: flex;
             width: max-content;
-            animation: heroFlowLeft 55s linear infinite;
+            animation: heroFlowLeft 58s linear infinite;
         }
-        .animate-hero-flow:hover {
+        .animate-hero-flow:hover, .animate-hero-flow.paused {
             animation-play-state: paused;
         }
 
-        /* 左右両端が対になるように透明へフェードするマスク */
         .hero-fade-mask {
             -webkit-mask-image: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0) 0%,
-                rgba(0, 0, 0, 0.75) 6%,
-                rgba(0, 0, 0, 1) 14%,
-                rgba(0, 0, 0, 1) 86%,
-                rgba(0, 0, 0, 0.75) 94%,
+                rgba(0, 0, 0, 0.85) 5%,
+                rgba(0, 0, 0, 1) 12%,
+                rgba(0, 0, 0, 1) 88%,
+                rgba(0, 0, 0, 0.85) 95%,
                 rgba(0, 0, 0, 0) 100%
             );
             mask-image: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0) 0%,
-                rgba(0, 0, 0, 0.75) 6%,
-                rgba(0, 0, 0, 1) 14%,
-                rgba(0, 0, 0, 1) 86%,
-                rgba(0, 0, 0, 0.75) 94%,
+                rgba(0, 0, 0, 0.85) 5%,
+                rgba(0, 0, 0, 1) 12%,
+                rgba(0, 0, 0, 1) 88%,
+                rgba(0, 0, 0, 0.85) 95%,
                 rgba(0, 0, 0, 0) 100%
             );
         }
-        @media (max-width: 640px) {
-            .hero-fade-mask {
-                -webkit-mask-image: linear-gradient(
-                    to right,
-                    rgba(0, 0, 0, 0) 0%,
-                    rgba(0, 0, 0, 0.8) 8%,
-                    rgba(0, 0, 0, 1) 18%,
-                    rgba(0, 0, 0, 1) 82%,
-                    rgba(0, 0, 0, 0.8) 92%,
-                    rgba(0, 0, 0, 0) 100%
-                );
-                mask-image: linear-gradient(
-                    to right,
-                    rgba(0, 0, 0, 0) 0%,
-                    rgba(0, 0, 0, 0.8) 8%,
-                    rgba(0, 0, 0, 1) 18%,
-                    rgba(0, 0, 0, 1) 82%,
-                    rgba(0, 0, 0, 0.8) 92%,
-                    rgba(0, 0, 0, 0) 100%
-                );
-            }
-        }
 
-        /* Scroll Reveal Animations */
+        /* M3 Motion: Emphasized Decelerate Scroll Reveal */
         .animate-on-scroll {
             opacity: 0;
-            transform: translateY(28px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: opacity, transform;
+            transform: translateY(20px);
+            transition: opacity 0.6s cubic-bezier(0.05, 0.7, 0.1, 1.0), transform 0.6s cubic-bezier(0.05, 0.7, 0.1, 1.0);
         }
         .animate-on-scroll.is-visible {
             opacity: 1;
-            transform: translateY(0);
-        }
-        .delay-100 { transition-delay: 100ms; }
-        .delay-200 { transition-delay: 200ms; }
-        .delay-300 { transition-delay: 300ms; }
-        .delay-400 { transition-delay: 400ms; }
-
-        /* Glass Card Surface */
-        .glass-panel {
-            background: rgba(255, 255, 255, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(231, 229, 228, 0.8);
+            transform: none;
         }
 
-        /* Custom Scrollbar for Modal */
+        /* 高解像度3DCGイラストの縮小表示ノイズ（ジャギー・モアレ）防止 */
+        .clean-thumb-img {
+            image-rendering: auto;
+            -webkit-font-smoothing: antialiased;
+            transform: translateZ(0);
+            backface-visibility: hidden;
+        }
+        .delay-100 { transition-delay: 80ms; }
+        .delay-200 { transition-delay: 160ms; }
+        .delay-300 { transition-delay: 240ms; }
+        .delay-400 { transition-delay: 320ms; }
+
+        /* Custom Scrollbar (M3 style) */
         .custom-scroll::-webkit-scrollbar {
             width: 6px;
             height: 6px;
         }
         .custom-scroll::-webkit-scrollbar-thumb {
-            background: #d6d3d1;
+            background: var(--md-sys-color-outline-variant);
             border-radius: 9999px;
+        }
+
+        /* M3 Linear Progress Bar Animation */
+        @keyframes md-indeterminate {
+            0% { left: -35%; right: 100%; }
+            60% { left: 100%; right: -90%; }
+            100% { left: 100%; right: -90%; }
         }
     </style>
 </head>
-<body class="bg-stone-50 text-stone-800 antialiased">
+<body class="antialiased selection:bg-orange-200">
 
-    <!-- 落ち着いたクリーンなローディングスクリーン -->
-    <div id="loading-screen" class="fixed inset-0 z-[9999] bg-stone-50 text-stone-800 flex flex-col items-center justify-center p-8 transition-all duration-700 ease-in-out">
-        <div class="relative flex flex-col items-center">
-            <div class="text-xs font-semibold text-stone-400 tracking-[0.2em] uppercase mb-4">Natorium_23 Portfolio</div>
-            <div class="text-6xl md:text-8xl font-bold text-stone-800 tracking-tight mb-6 flex items-baseline">
-                <span id="loading-number">0</span><span class="text-2xl md:text-4xl text-orange-600 ml-1.5 font-semibold">%</span>
+    <!-- =================================================================
+         M3 Loading Screen (Linear Progress Indicator & Surface Container)
+         ================================================================= -->
+    <div id="loading-screen" class="fixed inset-0 z-[9999] md-bg-surface flex flex-col items-center justify-center p-8 transition-all duration-700 ease-in-out">
+        <div class="w-full max-w-sm md-bg-surface-low p-8 rounded-md-xl border md-border-outline-variant md-elevation-2 flex flex-col items-center text-center">
+            <div class="w-14 h-14 rounded-2xl md-bg-primary-container flex items-center justify-center mb-5">
+                <span class="material-symbols-outlined text-3xl" style="color: var(--md-sys-color-on-primary-container);">view_in_ar</span>
             </div>
-            <div class="w-60 h-1 bg-stone-200 rounded-full overflow-hidden">
-                <div id="loading-bar" class="h-full bg-orange-600 rounded-full w-0 transition-all duration-75"></div>
+            <div class="text-xs font-medium tracking-[0.15em] uppercase md-text-on-surface-variant mb-2">
+                Natorium_23 Portfolio
             </div>
+            <div class="text-5xl font-bold md-text-on-surface tracking-tight mb-6 flex items-baseline font-mono">
+                <span id="loading-number">0</span>
+                <span class="text-xl md-text-primary ml-1 font-medium">%</span>
+            </div>
+            <!-- M3 Linear Progress Indicator Track -->
+            <div class="w-full h-2 md-bg-surface-highest rounded-full overflow-hidden">
+                <div id="loading-bar" class="h-full md-bg-primary rounded-full w-0 transition-all duration-75"></div>
+            </div>
+            <p class="mt-4 text-xs md-text-on-surface-variant">3DCG Studio Assets Loading...</p>
         </div>
     </div>
 
     <!-- アプリケーションルート -->
     <div id="root"></div>
-    <!-- モーダルルート -->
+    <!-- モーダルルート (M3 Dialog) -->
     <div id="modal-root"></div>
-    <!-- トースト通知 -->
-    <div id="toast-container" class="fixed bottom-6 right-6 z-[200] pointer-events-none flex flex-col gap-2"></div>
+    <!-- M3 Snackbar コンテナ -->
+    <div id="toast-container" class="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-6 z-[200] pointer-events-none flex flex-col gap-2 w-[92vw] sm:w-auto max-w-md"></div>
 
     <script>
         // =================================================================
@@ -340,10 +450,10 @@
         ];
 
         const pricingData = [
-            { id: 'full', item: 'モデル1体 (Full Character)', price: '400,000', rawPrice: 400000, notes: 'Vtuber/VRChat向け フルモデル制作', icon: 'user-check', badge: '人気 No.1' },
-            { id: 'outfit', item: '衣装のみ (Outfit Only)', price: '150,000', rawPrice: 150000, notes: '既存モデルへの衣装制作・調整', icon: 'shirt', badge: null },
-            { id: 'hair', item: '髪の毛のみ (Hair Only)', price: '100,000', rawPrice: 100000, notes: 'ヘアスタイル制作・リギング', icon: 'sparkles', badge: null },
-            { id: 'setup', item: 'セットアップのみ (Setup Only)', price: '150,000', rawPrice: 150000, notes: 'リギング、ウェイト、表情設定など', icon: 'sliders', badge: null },
+            { id: 'full', item: 'モデル1体 (Full Character)', price: '400,000', rawPrice: 400000, notes: 'Vtuber/VRChat向け フルモデル制作', icon: 'person_check', badge: '人気 No.1' },
+            { id: 'outfit', item: '衣装のみ (Outfit Only)', price: '150,000', rawPrice: 150000, notes: '既存モデルへの衣装制作・調整', icon: 'checkroom', badge: null },
+            { id: 'hair', item: '髪の毛のみ (Hair Only)', price: '100,000', rawPrice: 100000, notes: 'ヘアスタイル制作・リギング', icon: 'auto_awesome', badge: null },
+            { id: 'setup', item: 'セットアップのみ (Setup Only)', price: '150,000', rawPrice: 150000, notes: 'リギング、ウェイト、表情設定など', icon: 'tune', badge: null },
         ];
 
         const optionalPricingData = [
@@ -354,11 +464,11 @@
         ];
 
         const navLinks = [
-            { name: 'About', jp: '自己紹介', id: 'about' },
-            { name: 'Works', jp: '制作実績', id: 'works' },
-            { name: 'Price', jp: '料金プラン', id: 'price' }, 
-            { name: 'Flow', jp: '制作の流れ', id: 'flow' },
-            { name: 'Contact', jp: 'ご依頼・相談', id: 'contact' },
+            { name: '自己紹介', id: 'about', icon: 'person' },
+            { name: '制作実績', id: 'works', icon: 'grid_view' },
+            { name: '料金プラン', id: 'price', icon: 'payments' }, 
+            { name: '制作の流れ', id: 'flow', icon: 'account_tree' },
+            { name: 'ご依頼・相談', id: 'contact', icon: 'mail' },
         ];
 
         const workflowSteps = [
@@ -366,21 +476,21 @@
                 step: '01',
                 title: 'ヒアリング・お見積り',
                 desc: 'キャラクターのイメージ、三面図、使用用途（Vtuber/VRChat等）をお伺いし、制作期間と料金をご提案します。',
-                icon: 'message-square',
+                icon: 'forum',
                 deliverable: 'お見積書・制作スケジュール案'
             },
             {
                 step: '02',
                 title: 'ご契約・着手金',
                 desc: '内容にご納得いただけましたら契約となります。着手金の半額、または全額のお支払い確認後、制作スケジュールを確保いたします。',
-                icon: 'check-circle',
+                icon: 'verified',
                 deliverable: 'ご契約完了・制作枠の確保'
             },
             {
                 step: '03',
                 title: 'モデリング・進捗確認',
                 desc: '形状のラフ作成→本制作へと進めます。各段階（素体、衣装、髪など）でスクリーンショットによるチェックをお願いしています。',
-                icon: 'box',
+                icon: 'deployed_code',
                 deliverable: '各工程の監修用スクリーンショット'
             },
             {
@@ -394,7 +504,7 @@
                 step: '05',
                 title: '最終確認・納品',
                 desc: '実機（Unity/VRChat等）での動作確認動画をお送りします。問題なければVRM/UnityPackage形式で納品いたします。',
-                icon: 'monitor',
+                icon: 'desktop_windows',
                 deliverable: '動作確認動画 / VRM・UnityPackage納品'
             }
         ];
@@ -417,34 +527,65 @@
         let selectedWork = null;
         let isMenuOpen = false;
         let activeModalImageKey = 'main';
+        let activeSection = 'about';
 
         // ====================================================================
-        // Helper: Toast Notification
+        // Material Design 3 Ripple Effect Generator
         // ====================================================================
-        const showToast = (message, icon = 'check-circle') => {
+        document.addEventListener('pointerdown', (e) => {
+            const target = e.target.closest('.md-interactive');
+            if (!target) return;
+
+            const rect = target.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.className = 'md-ripple';
+
+            target.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 620);
+        });
+
+        // ====================================================================
+        // Helper: M3 Snackbar Notification
+        // ====================================================================
+        const showToast = (message, icon = 'check_circle') => {
             const container = document.getElementById('toast-container');
             if (!container) return;
             const toast = document.createElement('div');
-            toast.className = 'flex items-center gap-3 bg-stone-800 text-white px-5 py-3.5 rounded-2xl shadow-xl border border-stone-700 transform translate-y-4 opacity-0 transition-all duration-300 pointer-events-auto';
+            toast.style.backgroundColor = 'var(--md-sys-color-inverse-surface)';
+            toast.style.color = 'var(--md-sys-color-inverse-on-surface)';
+            toast.className = 'flex items-center justify-between gap-4 px-5 py-3.5 rounded-md-sm md-elevation-3 transform translate-y-4 opacity-0 transition-all duration-300 pointer-events-auto';
             toast.innerHTML = `
-                <i data-lucide="${icon}" class="text-orange-400 w-5 h-5 shrink-0"></i>
-                <span class="text-sm font-medium tracking-wide">${message}</span>
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined text-xl" style="color: var(--md-sys-color-inverse-primary);">${icon}</span>
+                    <span class="text-sm font-medium tracking-wide">${message}</span>
+                </div>
+                <button onclick="this.parentElement.remove()" class="text-xs font-bold uppercase tracking-wider px-2 py-1 rounded hover:opacity-80" style="color: var(--md-sys-color-inverse-primary);">
+                    閉じる
+                </button>
             `;
             container.appendChild(toast);
-            if (typeof lucide !== 'undefined') lucide.createIcons();
 
             requestAnimationFrame(() => {
                 toast.classList.remove('translate-y-4', 'opacity-0');
             });
 
             setTimeout(() => {
-                toast.classList.add('translate-y-4', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3200);
+                if (toast.parentElement) {
+                    toast.classList.add('translate-y-4', 'opacity-0');
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 3500);
         };
 
         // ====================================================================
-        // Work Click Logic
+        // Work Click & Navigation Handlers
         // ====================================================================
         const handleWorkClick = (workId, isPlaceholder) => {
             if (!isPlaceholder) {
@@ -453,17 +594,16 @@
             }
         };
 
-        // ====================================================================
-        // Navigation & UI Handlers
-        // ====================================================================
         const scrollToSection = (id) => {
             const element = document.getElementById(id);
             if (element) {
+                activeSection = id;
                 element.scrollIntoView({ behavior: 'smooth' });
                 if (isMenuOpen) {
                     isMenuOpen = false;
-                    renderHeader();
                 }
+                renderHeader();
+                renderBottomNav();
             }
         };
 
@@ -503,13 +643,9 @@
         const copyTemplateText = () => {
             const templateTextarea = document.getElementById('commission-template-text');
             if (!templateTextarea) return;
-            navigator.clipboard.writeText(templateTextarea.value).then(() => {
-                showToast('ご依頼テンプレートをクリップボードにコピーしました', 'copy');
-            }).catch(() => {
-                templateTextarea.select();
-                document.execCommand('copy');
-                showToast('ご依頼テンプレートをコピーしました', 'copy');
-            });
+            templateTextarea.select();
+            document.execCommand('copy');
+            showToast('ご依頼テンプレートをクリップボードにコピーしました', 'content_copy');
         };
 
         // ====================================================================
@@ -519,7 +655,13 @@
             const header = document.getElementById('site-header');
             if (header) {
                 header.outerHTML = Header();
-                if (typeof lucide !== 'undefined') lucide.createIcons();
+            }
+        };
+
+        const renderBottomNav = () => {
+            const bottomNav = document.getElementById('mobile-bottom-nav');
+            if (bottomNav) {
+                bottomNav.outerHTML = MobileBottomNavigation();
             }
         };
 
@@ -527,7 +669,6 @@
             const worksSection = document.getElementById('works');
             if (worksSection) {
                 worksSection.outerHTML = Works();
-                if (typeof lucide !== 'undefined') lucide.createIcons();
                 initScrollAnimations();
             }
         };
@@ -536,37 +677,37 @@
             const modalRoot = document.getElementById('modal-root');
             if (modalRoot) {
                 modalRoot.innerHTML = WorkModal(selectedWork);
-                if (typeof lucide !== 'undefined') lucide.createIcons();
             }
         };
 
         // ====================================================================
-        // Component Templates
+        // Material Design 3 Component Templates
         // ====================================================================
 
         const Header = () => `
-            <header id="site-header" class="fixed top-4 inset-x-4 sm:inset-x-8 lg:inset-x-12 z-50 max-w-[1480px] mx-auto transition-all duration-300">
-                <div class="glass-panel shadow-sm rounded-full h-16 px-4 sm:px-7 flex items-center justify-between gap-2">
-                    <!-- Brand Identity + Live Status Badge -->
-                    <div class="flex items-center gap-3 sm:gap-4 min-w-0">
-                        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0">
-                            <div class="relative w-9 h-9 rounded-full overflow-hidden border border-stone-200 shrink-0">
+            <header id="site-header" class="fixed top-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-b md-border-outline-variant transition-colors duration-300">
+                <div class="max-w-[1480px] mx-auto h-16 px-4 sm:px-8 flex items-center justify-between gap-3">
+                    
+                    <!-- Left: Brand Identity + Live Status Assist Chip -->
+                    <div class="flex items-center gap-3 min-w-0">
+                        <a href="#" class="md-interactive flex items-center gap-3 px-2 py-1.5 rounded-full shrink-0">
+                            <div class="relative w-9 h-9 rounded-full overflow-hidden border md-border-outline-variant shrink-0">
                                 <img 
                                     src="${PROFILE_IMAGE_URL}" 
                                     alt="Profile" 
-                                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    class="w-full h-full object-cover"
                                     onerror="this.onerror=null; this.src='https://placehold.co/100x100/78716c/ffffff?text=Icon';"
                                 />
                             </div>
-                            <span class="font-bold text-sm sm:text-base md:text-lg tracking-normal text-stone-800 truncate">
+                            <span class="font-bold text-base sm:text-lg tracking-tight md-text-on-surface truncate">
                                 Natorium_23
                             </span>
                         </a>
 
-                        <!-- Live Status Badge (ご依頼相談 受付中) -->
+                        <!-- M3 Assist Chip: ご依頼相談 受付中 -->
                         <button 
                             onclick="scrollToSection('contact')"
-                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50/90 hover:bg-emerald-100/90 border border-emerald-200/80 text-emerald-800 text-[11px] sm:text-xs font-semibold transition-colors shrink-0"
+                            class="md-interactive inline-flex items-center gap-2 h-8 px-3 rounded-md-sm bg-white border md-border-outline-variant md-text-on-surface text-xs font-medium shrink-0"
                             title="ご依頼・ご相談セクションへ移動"
                         >
                             <span class="relative flex h-2 w-2">
@@ -577,50 +718,63 @@
                         </button>
                     </div>
                     
-                    <!-- Desktop Nav -->
+                    <!-- Center: Desktop M3 Navigation Pills (日本語統一) -->
                     <nav class="hidden lg:flex items-center gap-1">
-                        ${navLinks.map(link => `
+                        ${navLinks.map(link => {
+                            const isActive = activeSection === link.id;
+                            return `
                             <button 
                                 onclick="scrollToSection('${link.id}')"
-                                class="px-4 py-2 rounded-full text-sm font-medium text-stone-600 hover:text-stone-900 hover:bg-stone-100/80 transition-all duration-200"
+                                class="md-interactive px-4 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors ${
+                                    isActive 
+                                        ? 'md-bg-primary-container font-bold' 
+                                        : 'md-text-on-surface-variant'
+                                }"
                             >
-                                ${link.name}
+                                <span class="material-symbols-outlined text-[18px] ${isActive ? 'material-symbols-filled' : ''}">${link.icon}</span>
+                                <span>${link.name}</span>
                             </button>
-                        `).join('')}
+                        `}).join('')}
                     </nav>
 
-                    <!-- CTA -->
-                    <div class="hidden md:flex items-center shrink-0">
+                    <!-- Right: Primary Action & Mobile Menu Button -->
+                    <div class="flex items-center gap-2 shrink-0">
+                        <!-- M3 Filled Button: Contact CTA -->
                         <button 
                             onclick="scrollToSection('contact')"
-                            class="bg-stone-800 hover:bg-orange-600 text-white text-xs font-semibold px-5 py-2.5 rounded-full transition-colors duration-300 flex items-center gap-2"
+                            class="hidden md:inline-flex md-interactive md-bg-primary h-10 px-5 rounded-full text-sm font-bold items-center gap-2 md-elevation-1 hover:md-elevation-2"
                         >
-                            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                            <span class="material-symbols-outlined text-[18px]">mail</span>
                             <span>お問い合わせ</span>
                         </button>
-                    </div>
 
-                    <!-- Mobile Menu Trigger -->
-                    <button 
-                        class="lg:hidden text-stone-700 bg-stone-100 hover:bg-stone-200 p-2 rounded-full transition-colors shrink-0"
-                        onclick="toggleMenu()"
-                        aria-label="Toggle Menu"
-                    >
-                        <i data-lucide="${isMenuOpen ? 'x' : 'menu'}" class="w-5 h-5"></i>
-                    </button>
+                        <!-- Mobile Menu Trigger (Icon Button) -->
+                        <button 
+                            class="lg:hidden md-interactive w-10 h-10 rounded-full flex items-center justify-center md-text-on-surface"
+                            onclick="toggleMenu()"
+                            aria-label="メニューを開く"
+                        >
+                            <span class="material-symbols-outlined">${isMenuOpen ? 'close' : 'menu'}</span>
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Mobile Dropdown Menu -->
+                <!-- Mobile M3 Navigation Drawer Sheet (日本語統一) -->
                 ${isMenuOpen ? `
-                    <div class="mt-2 glass-panel lg:hidden shadow-lg rounded-2xl p-4">
+                    <div class="lg:hidden bg-white border-b md-border-outline-variant px-4 pt-2 pb-4 md-elevation-2">
                         <div class="flex flex-col space-y-1">
                             ${navLinks.map(link => `
                                 <button 
                                     onclick="scrollToSection('${link.id}')"
-                                    class="flex items-center justify-between text-left py-3 px-4 hover:bg-stone-100 text-stone-700 rounded-xl transition-colors"
+                                    class="md-interactive flex items-center justify-between text-left h-12 px-4 rounded-full ${
+                                        activeSection === link.id ? 'md-bg-primary-container font-bold' : 'md-text-on-surface'
+                                    }"
                                 >
-                                    <span class="font-semibold text-sm">${link.name}</span>
-                                    <span class="text-xs text-stone-400">${link.jp}</span>
+                                    <div class="flex items-center gap-3">
+                                        <span class="material-symbols-outlined text-[20px]">${link.icon}</span>
+                                        <span class="text-sm">${link.name}</span>
+                                    </div>
+                                    <span class="material-symbols-outlined text-[18px] md-text-on-surface-variant">chevron_right</span>
                                 </button>
                             `).join('')}
                         </div>
@@ -629,49 +783,86 @@
             </header>
         `;
 
+        // Mobile Bottom Navigation Bar (Material Design 3 Standard Navigation Bar - 日本語統一)
+        const MobileBottomNavigation = () => `
+            <nav id="mobile-bottom-nav" class="lg:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t md-border-outline-variant h-16 px-2 flex items-center justify-around">
+                ${navLinks.map(link => {
+                    const isActive = activeSection === link.id;
+                    return `
+                    <button 
+                        onclick="scrollToSection('${link.id}')"
+                        class="flex flex-col items-center justify-center flex-1 py-1 gap-1 group"
+                    >
+                        <div class="md-interactive w-16 h-8 rounded-full flex items-center justify-center transition-colors ${
+                            isActive ? 'md-bg-primary-container' : 'md-text-on-surface-variant'
+                        }">
+                            <span class="material-symbols-outlined text-[20px] ${isActive ? 'material-symbols-filled' : ''}">${link.icon}</span>
+                        </div>
+                        <span class="text-[11px] leading-none ${isActive ? 'font-bold md-text-on-surface' : 'font-medium md-text-on-surface-variant'}">
+                            ${link.name}
+                        </span>
+                    </button>
+                `}).join('')}
+            </nav>
+        `;
+
         const Hero = () => {
-            // 右から左へ流れる大型ショーケース用の作品配列（シームレスなループ用に2回繰り返す）
             const showcaseWorks = [...WORKS_DATA, ...WORKS_DATA];
 
             return `
-            <section class="relative z-10 min-h-[82vh] sm:min-h-[92vh] flex flex-col justify-center pt-24 pb-10 overflow-hidden">
-                <!-- 右端から透明で現れ、左端で透明にフェードアウトする大型ショーケース -->
+            <section class="relative z-10 min-h-[82vh] sm:min-h-[90vh] pt-24 pb-10 overflow-hidden flex flex-col justify-center">
+                <!-- M3 Uncontained Hero Carousel (右から左へ流れる大型ショーケース) -->
                 <div class="w-full flex items-center pointer-events-auto z-10 hero-fade-mask py-4">
-                    <div class="animate-hero-flow flex items-center gap-5 sm:gap-7 md:gap-9 pl-6">
+                    <div id="hero-carousel-track" class="animate-hero-flow flex items-center gap-5 sm:gap-7 pl-6">
                         ${showcaseWorks.map(work => {
                             const categoryLabel = filterTabs.find(t => t.id === work.category)?.name || work.category;
                             return `
                             <div 
                                 onclick="openModal(WORKS_DATA.find(w => w.id === ${work.id}))"
-                                class="w-64 sm:w-80 md:w-96 lg:w-[420px] xl:w-[450px] aspect-3-4 rounded-[2rem] overflow-hidden bg-white shadow-lg border border-stone-200/80 shrink-0 cursor-pointer group relative transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl"
+                                class="w-64 sm:w-80 md:w-96 lg:w-[420px] xl:w-[440px] aspect-3-4 rounded-md-xl overflow-hidden bg-white md-elevation-2 hover:md-elevation-4 border md-border-outline-variant shrink-0 cursor-pointer group relative transition-all duration-500 hover:-translate-y-1.5"
                             >
                                 <img 
                                     src="${work.image}" 
                                     alt="${work.title}" 
-                                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    class="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                                     onerror="this.onerror=null; this.src='https://placehold.co/600x800/e7e5e4/78716c?text=Work';"
                                 />
-                                <!-- ホバー時の情報オーバーレイ -->
-                                <div class="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 sm:p-8">
-                                    <span class="text-[11px] font-semibold bg-white/90 text-stone-800 px-3 py-1 rounded-full w-fit mb-2">
+                                <!-- Top M3 Assist Chip Overlay -->
+                                <div class="absolute top-4 left-4 right-4 flex items-center justify-between pointer-events-none z-10">
+                                    <span class="text-[11px] font-bold bg-white/95 backdrop-blur-md md-text-on-surface px-3 py-1 rounded-md-sm md-elevation-1">
                                         ${categoryLabel}
                                     </span>
-                                    <p class="text-white text-base sm:text-lg font-bold leading-snug">${work.title}</p>
+                                    ${work.imageTpose ? `
+                                        <span class="text-[11px] font-bold md-bg-primary-container px-2.5 py-1 rounded-md-sm md-elevation-1">
+                                            Tポーズあり
+                                        </span>
+                                    ` : ''}
+                                </div>
+                                <!-- ホバー時のみ下部だけに表示されるクリーンなタイトルオーバーレイ（通常時は暗みゼロ） -->
+                                <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/75 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 pointer-events-none">
+                                    <div class="flex flex-wrap gap-1.5 mb-2">
+                                        ${work.specs.slice(0, 3).map(spec => `
+                                            <span class="text-[11px] font-bold bg-white/90 text-stone-900 px-2.5 py-0.5 rounded-md-xs">
+                                                ${spec}
+                                            </span>
+                                        `).join('')}
+                                    </div>
+                                    <p class="text-white text-base sm:text-lg font-bold leading-snug drop-shadow-sm">${work.title}</p>
                                 </div>
                             </div>
                         `}).join('')}
                     </div>
                 </div>
 
-                <!-- 下部スクロールガイド -->
-                <div class="max-w-[1480px] w-full mx-auto px-6 sm:px-10 lg:px-14 mt-6 flex items-center justify-between text-xs text-stone-400">
+                <!-- 下部ガイドバー -->
+                <div class="max-w-[1480px] w-full mx-auto px-4 sm:px-8 lg:px-12 mt-6 flex items-center justify-between text-xs sm:text-sm font-bold md-text-on-surface-variant">
                     <span class="flex items-center gap-2">
-                        <i data-lucide="mouse-pointer-click" class="w-4 h-4 text-orange-600"></i>
-                        <span>作品をクリックすると詳細・Tポーズを確認できます</span>
+                        <span class="material-symbols-outlined text-[18px] md-text-primary">touch_app</span>
+                        <span>カードをクリックすると詳細・Tポーズを確認できます</span>
                     </span>
-                    <button onclick="scrollToSection('about')" class="hover:text-stone-700 transition-colors flex items-center gap-1.5 font-medium">
+                    <button onclick="scrollToSection('about')" class="md-interactive px-3 py-1.5 rounded-full flex items-center gap-1.5 font-bold md-text-on-surface">
                         <span>SCROLL DOWN</span>
-                        <i data-lucide="arrow-down" class="w-3.5 h-3.5 animate-bounce"></i>
+                        <span class="material-symbols-outlined text-[16px] animate-bounce">arrow_downward</span>
                     </button>
                 </div>
             </section>
@@ -679,41 +870,57 @@
         };
 
         const About = () => `
-            <section id="about" class="relative z-10 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1480px] mx-auto">
-                <div class="bg-white rounded-[2.5rem] shadow-sm border border-stone-200/80 p-7 sm:p-12 lg:p-16 xl:p-20 relative overflow-hidden">
+            <section id="about" class="relative z-10 py-14 sm:py-20 px-4 sm:px-8 lg:px-12 max-w-[1480px] mx-auto">
+                <!-- M3 Elevated Surface Card (28px Extra-Large Radius) -->
+                <div class="md-bg-surface-low rounded-md-xl md-elevation-1 border md-border-outline-variant p-7 sm:p-12 lg:p-16 relative overflow-hidden">
                     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-                        <!-- プロフィール画像 (PCで4カラム分活用) -->
+                        
+                        <!-- プロフィール画像 (4 cols) -->
                         <div class="lg:col-span-4 flex flex-col items-center justify-center animate-on-scroll">
-                            <div class="w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64 bg-stone-100 shrink-0 flex items-center justify-center rounded-full border-4 border-stone-100 shadow-md overflow-hidden relative group">
-                                <img 
-                                    src="${PROFILE_IMAGE_URL}" 
-                                    alt="Natorium_23 Profile" 
-                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
-                                    onerror="this.onerror=null; this.src='https://placehold.co/400x400/78716c/ffffff?text=Image+Error';"
-                                />
+                            <div class="relative p-2 rounded-full md-bg-primary-container md-elevation-2">
+                                <div class="w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 rounded-full overflow-hidden relative group">
+                                    <img 
+                                        src="${PROFILE_IMAGE_URL}" 
+                                        alt="Natorium_23 Profile" 
+                                        class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/78716c/ffffff?text=Image+Error';"
+                                    />
+                                </div>
+                                <div class="absolute bottom-3 right-3 w-11 h-11 rounded-full md-bg-primary flex items-center justify-center md-elevation-2">
+                                    <span class="material-symbols-outlined text-xl">verified</span>
+                                </div>
                             </div>
                         </div>
                         
-                        <!-- 自己紹介テキスト（シンプル構成・PCで8カラム分活用） -->
+                        <!-- 自己紹介テキスト (8 cols) -->
                         <div class="lg:col-span-8">
-                            <div class="flex items-center gap-3 mb-6 animate-on-scroll delay-100">
-                                <div class="h-1.5 w-8 bg-orange-600 rounded-full"></div>
-                                <h3 class="text-3xl md:text-4xl font-bold text-stone-900 tracking-normal">ABOUT ME</h3>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md-sm md-bg-secondary-container text-xs font-bold uppercase tracking-wider mb-3 animate-on-scroll delay-100">
+                                <span class="material-symbols-outlined text-[16px]">badge</span>
+                                <span>Creator Profile</span>
                             </div>
-                            <p class="text-stone-600 leading-loose mb-8 font-normal text-base md:text-lg animate-on-scroll delay-200">
+                            <h2 class="text-3xl md:text-4xl font-extrabold md-text-on-surface tracking-tight mb-6 animate-on-scroll delay-100">
+                                ABOUT ME
+                            </h2>
+                            <p class="md-text-on-surface leading-loose mb-8 font-medium text-base md:text-lg animate-on-scroll delay-200">
                                 フリーランスの3DCGデザイナーとして活動しています。<br/>
                                 主にMAYAやUnityを使用し、Vtuberモデルの制作からVRChat向けアバターのセットアップまで幅広く対応可能です。
                                 キャラクターの魅力を最大限に引き出す「かわいい」「かっこいい」造形と、破綻のない丁寧なリギングを心がけています。
                             </p>
                             
-                            <!-- Main Tools -->
-                            <div class="bg-stone-50 p-6 sm:p-7 rounded-2xl border border-stone-200/80 animate-on-scroll delay-300">
-                                <span class="text-orange-600 font-semibold text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
-                                    <i data-lucide="monitor" class="w-4 h-4"></i> Main Tools
-                                </span>
-                                <span class="font-semibold text-stone-800 text-base md:text-lg leading-snug block">
-                                    MAYA, ZBrush, Unity, Substance 3D Painter, Photoshop
-                                </span>
+                            <!-- Main Tools (M3 Filled Card + Assist Chips) -->
+                            <div class="md-bg-surface-container p-6 sm:p-7 rounded-md-lg border md-border-outline-variant animate-on-scroll delay-300">
+                                <div class="md-text-primary font-bold text-xs uppercase tracking-wider mb-4 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-[18px]">desktop_windows</span>
+                                    <span>Main Tools & Environment</span>
+                                </div>
+                                <div class="flex flex-wrap gap-2.5">
+                                    ${['MAYA', 'ZBrush', 'Unity', 'Substance 3D Painter', 'Photoshop'].map(tool => `
+                                        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-md-sm md-bg-surface-lowest border md-border-outline-variant md-text-on-surface text-sm font-bold md-elevation-1">
+                                            <span class="material-symbols-outlined text-[16px] md-text-primary">check_circle</span>
+                                            <span>${tool}</span>
+                                        </span>
+                                    `).join('')}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -725,38 +932,46 @@
             const displayedWorks = WORKS_DATA.filter(work => activeTab === 'all' || work.category === activeTab);
 
             return `
-            <section id="works" class="relative z-10 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1480px] mx-auto">
-                <!-- ヘッダー＆フィルターバー -->
-                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6 animate-on-scroll">
+            <section id="works" class="relative z-10 py-14 sm:py-20 px-4 sm:px-8 lg:px-12 max-w-[1480px] mx-auto">
+                <!-- ヘッダー＆ M3 Filter Chips / Segmented Control -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 animate-on-scroll">
                     <div>
-                        <p class="text-orange-600 font-semibold text-xs uppercase tracking-widest mb-1.5">Portfolio Archive</p>
-                        <h3 class="text-3xl md:text-4xl font-bold text-stone-900 tracking-normal">
+                        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md-sm md-bg-secondary-container text-xs font-bold uppercase tracking-wider mb-2">
+                            <span class="material-symbols-outlined text-[16px]">collections_bookmark</span>
+                            <span>Portfolio Archive</span>
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold md-text-on-surface tracking-tight">
                             WORKS
-                        </h3>
+                        </h2>
                     </div>
 
-                    <!-- カテゴリフィルタータブ -->
-                    <div class="flex flex-wrap gap-1.5 bg-white p-1.5 rounded-2xl sm:rounded-full shadow-sm border border-stone-200/80 w-fit">
-                        ${filterTabs.map(tab => `
+                    <!-- M3 Filter Chips Group -->
+                    <div class="flex flex-wrap gap-2" role="tablist" aria-label="作品カテゴリフィルター">
+                        ${filterTabs.map(tab => {
+                            const isSelected = activeTab === tab.id;
+                            return `
                             <button
                                 onclick="setActiveTab('${tab.id}')"
-                                class="px-4 sm:px-5 py-2 text-xs md:text-sm font-semibold rounded-xl sm:rounded-full transition-all flex items-center gap-1.5 ${
-                                    activeTab === tab.id
-                                        ? 'bg-stone-800 text-white shadow-sm' 
-                                        : 'text-stone-600 hover:bg-stone-100 hover:text-stone-900'
+                                role="tab"
+                                aria-selected="${isSelected}"
+                                class="md-interactive h-10 px-4 text-xs sm:text-sm font-medium rounded-md-sm transition-all flex items-center gap-2 border ${
+                                    isSelected
+                                        ? 'md-bg-secondary-container border-transparent font-bold md-elevation-1' 
+                                        : 'md-bg-surface-lowest md-border-outline-variant md-text-on-surface-variant'
                                 }"
                             >
+                                ${isSelected ? `<span class="material-symbols-outlined text-[18px]">check</span>` : ''}
                                 <span>${tab.name}</span>
-                                <span class="text-xs px-1.5 py-0.2 rounded-full ${
-                                    activeTab === tab.id ? 'text-stone-300' : 'text-stone-400'
+                                <span class="text-xs px-2 py-0.5 rounded-full ${
+                                    isSelected ? 'md-bg-primary text-white' : 'md-bg-surface-container md-text-on-surface-variant'
                                 }">${tab.count}</span>
                             </button>
-                        `).join('')}
+                        `}).join('')}
                     </div>
                 </div>
 
-                <!-- ワイド画面を活かす一覧グリッド表示 (PC最大4列 / タブレット2〜3列 / スマホ1列) -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-7 xl:gap-8">
+                <!-- M3 Elevated Cards Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                     ${displayedWorks.map((work, index) => WorkCardHTML(work, index)).join('')}
                 </div>
             </section>
@@ -766,88 +981,106 @@
         const WorkCardHTML = (work, index) => {
             const categoryLabel = filterTabs.find(t => t.id === work.category)?.name || work.category;
             return `
-                <div 
+                <article 
                     onclick="handleWorkClick(${work.id}, ${work.isPlaceholder})" 
-                    class="work-card group relative aspect-3-4 bg-white rounded-3xl overflow-hidden shadow-sm transition-all duration-500 border border-stone-200/80 animate-on-scroll delay-${(index % 4 + 1) * 100} ${
-                        work.isPlaceholder 
-                            ? 'cursor-default bg-stone-50'
-                            : 'cursor-pointer hover:shadow-xl hover:-translate-y-1.5'
+                    class="group flex flex-col bg-white rounded-md-xl overflow-hidden md-elevation-1 hover:md-elevation-3 border md-border-outline-variant transition-shadow duration-300 animate-on-scroll delay-${(index % 4 + 1) * 100} ${
+                        work.isPlaceholder ? 'cursor-default opacity-60' : 'cursor-pointer'
                     }"
                 >
-                    <img 
-                        src="${work.image}" 
-                        alt="${work.title}" 
-                        class="w-full h-full object-cover transition-transform duration-700 ease-out ${
-                            work.isPlaceholder ? 'opacity-50' : 'group-hover:scale-105'
-                        }"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x533/78716c/ffffff?text=Image+Error';"
-                    />
-                    
-                    <!-- トップバッジ -->
-                    <div class="absolute top-4 left-4 right-4 flex items-center justify-between z-10 pointer-events-none">
-                        <span class="text-xs font-semibold bg-white/90 backdrop-blur-md text-stone-700 px-3 py-1 rounded-full shadow-sm">
-                            ${categoryLabel}
-                        </span>
-                        <div class="flex items-center gap-1.5">
+                    <!-- M3 Card Media (純白背景・余計なオーバーレイやGPU変形でノイズが出ないクリーン設計) -->
+                    <div class="relative aspect-3-4 w-full overflow-hidden bg-white">
+                        <img 
+                            src="${work.image}" 
+                            alt="${work.title}" 
+                            loading="lazy"
+                            decoding="async"
+                            class="clean-thumb-img w-full h-full object-cover transition-opacity duration-300 group-hover:opacity-95"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x533/78716c/ffffff?text=Image+Error';"
+                        />
+                        <!-- Top Badges -->
+                        <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10 pointer-events-none">
+                            <span class="text-xs font-bold bg-white/95 backdrop-blur-md md-text-on-surface px-3 py-1 rounded-md-sm md-elevation-1">
+                                ${categoryLabel}
+                            </span>
                             ${work.imageTpose ? `
-                                <span class="text-[11px] font-medium bg-stone-800/80 backdrop-blur-md text-stone-100 px-2.5 py-1 rounded-full">
-                                    Tポーズあり
+                                <span class="text-[11px] font-bold md-bg-primary-container px-2.5 py-1 rounded-md-sm md-elevation-1 flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-[14px]">accessibility_new</span>
+                                    <span>Tポーズあり</span>
                                 </span>
                             ` : ''}
                         </div>
                     </div>
 
-                    <!-- 下部グラデーション＆テキスト -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-900/85 via-stone-900/20 to-transparent opacity-85 group-hover:opacity-95 transition-opacity duration-300"></div>
-                    
-                    <div class="absolute bottom-0 left-0 w-full p-5 sm:p-6 flex flex-col justify-end">
-                        <div class="flex flex-wrap gap-1.5 mb-2">
-                            ${work.specs.filter(Boolean).map(spec => `
-                                <span class="text-[11px] font-medium bg-white/15 backdrop-blur-sm text-stone-100 px-2.5 py-0.5 rounded-md">
-                                    ${spec}
-                                </span>
-                            `).join('')}
+                    <!-- M3 Card Content Area -->
+                    <div class="md-interactive p-5 flex-1 flex flex-col justify-between bg-white border-t md-border-outline-variant">
+                        <div>
+                            <h3 class="text-base font-bold md-text-on-surface leading-snug mb-3 group-hover:md-text-primary transition-colors">
+                                ${work.title}
+                            </h3>
+                            <div class="flex flex-wrap gap-1.5">
+                                ${work.specs.filter(Boolean).map(spec => `
+                                    <span class="text-[11px] font-bold md-bg-surface-container md-text-on-surface-variant px-2.5 py-1 rounded-md-xs">
+                                        ${spec}
+                                    </span>
+                                `).join('')}
+                            </div>
                         </div>
-                        <h4 class="text-base sm:text-lg font-bold text-white leading-snug">
-                            ${work.title}
-                        </h4>
+                        <div class="mt-4 pt-3 border-t md-border-outline-variant flex items-center justify-between text-xs font-bold md-text-primary">
+                            <span>詳細・仕様を見る</span>
+                            <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </div>
                     </div>
-                </div>
+                </article>
             `;
         };
 
         const Price = () => `
-            <section id="price" class="relative z-10 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1480px] mx-auto">
-                <div class="bg-white rounded-[2.5rem] shadow-sm border border-stone-200/80 p-7 sm:p-12 lg:p-16 xl:p-20 overflow-hidden">
+            <section id="price" class="relative z-10 py-14 sm:py-20 px-4 sm:px-8 lg:px-12 max-w-[1480px] mx-auto">
+                <div class="md-bg-surface-low rounded-md-xl md-elevation-1 border md-border-outline-variant p-7 sm:p-12 lg:p-16 overflow-hidden">
                     <!-- ヘッダー -->
-                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b border-stone-200/80 gap-4 animate-on-scroll">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 pb-6 border-b md-border-outline-variant gap-4 animate-on-scroll">
                         <div>
-                            <p class="text-orange-600 font-semibold text-xs uppercase tracking-widest mb-1.5">Pricing & Plans</p>
-                            <h3 class="text-3xl md:text-4xl font-bold text-stone-900 tracking-normal">PRICE</h3>
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md-sm md-bg-secondary-container text-xs font-bold uppercase tracking-wider mb-2">
+                                <span class="material-symbols-outlined text-[16px]">payments</span>
+                                <span>Pricing & Plans</span>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold md-text-on-surface tracking-tight">PRICE</h2>
                         </div>
-                        <p class="text-stone-500 font-normal text-sm md:text-base">
-                            制作費用目安 (全て<strong>税別</strong>表示です)
+                        <p class="md-text-on-surface-variant font-normal text-sm md:text-base flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[18px] md-text-primary">info</span>
+                            <span>制作費用目安 (全て<strong>税別</strong>表示です)</span>
                         </p>
                     </div>
 
-                    <!-- PCでは左右2カラムで横幅を有効活用 / スマホでは縦積み -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-14">
                         <!-- I. ベース制作プラン -->
                         <div>
-                            <h4 class="text-lg md:text-xl font-bold text-stone-800 mb-5 pb-2 border-b border-stone-200 flex items-center gap-2 animate-on-scroll delay-100">
-                                <span class="text-orange-600">I.</span>
+                            <h3 class="text-lg md:text-xl font-bold md-text-on-surface mb-5 pb-3 border-b md-border-outline-variant flex items-center gap-2.5 animate-on-scroll delay-100">
+                                <span class="w-7 h-7 rounded-full md-bg-primary text-xs font-bold flex items-center justify-center">I</span>
                                 <span>ベース制作プラン</span>
-                            </h4>
+                            </h3>
                             <div class="space-y-4">
                                 ${pricingData.map((item, index) => `
-                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-5 sm:p-6 bg-stone-50 rounded-2xl border border-stone-200/80 hover:border-stone-300 transition-all animate-on-scroll delay-${(index % 4 + 1) * 100}">
-                                        <div class="mb-2 sm:mb-0 pr-4">
-                                            <h5 class="text-base md:text-lg font-bold text-stone-800">${item.item}</h5>
-                                            <p class="text-sm text-stone-500 mt-1">${item.notes}</p>
+                                    <div class="md-interactive flex flex-col sm:flex-row sm:items-center justify-between p-5 sm:p-6 md-bg-surface-lowest rounded-md-lg border md-border-outline-variant md-elevation-1 transition-all animate-on-scroll delay-${(index % 4 + 1) * 100}">
+                                        <div class="flex items-start gap-4 mb-3 sm:mb-0 pr-4">
+                                            <div class="w-11 h-11 rounded-md-md md-bg-primary-container flex items-center justify-center shrink-0 mt-0.5">
+                                                <span class="material-symbols-outlined text-[22px]">${item.icon}</span>
+                                            </div>
+                                            <div>
+                                                <div class="flex items-center gap-2 flex-wrap">
+                                                    <h4 class="text-base md:text-lg font-bold md-text-on-surface">${item.item}</h4>
+                                                    ${item.badge ? `
+                                                        <span class="text-[11px] font-bold md-bg-tertiary-container px-2.5 py-0.5 rounded-full">
+                                                            ${item.badge}
+                                                        </span>
+                                                    ` : ''}
+                                                </div>
+                                                <p class="text-sm md-text-on-surface-variant mt-1">${item.notes}</p>
+                                            </div>
                                         </div>
-                                        <div class="text-right shrink-0">
-                                            <p class="text-2xl md:text-3xl font-bold text-stone-900">
-                                                ${formatPrice(item.price)}<span class="text-sm font-normal text-stone-600 ml-1">円〜</span>
+                                        <div class="text-right shrink-0 pl-15 sm:pl-0">
+                                            <p class="text-2xl md:text-3xl font-bold md-text-on-surface font-mono">
+                                                ${formatPrice(item.price)}<span class="text-sm font-sans font-normal md-text-on-surface-variant ml-1">円〜</span>
                                             </p>
                                         </div>
                                     </div>
@@ -857,23 +1090,23 @@
                         
                         <!-- II. 追加オプション代 -->
                         <div>
-                            <h4 class="text-lg md:text-xl font-bold text-stone-800 mb-5 pb-2 border-b border-stone-200 flex items-center gap-2 animate-on-scroll delay-100">
-                                <span class="text-orange-600">II.</span>
+                            <h3 class="text-lg md:text-xl font-bold md-text-on-surface mb-5 pb-3 border-b md-border-outline-variant flex items-center gap-2.5 animate-on-scroll delay-100">
+                                <span class="w-7 h-7 rounded-full md-bg-secondary-container text-xs font-bold flex items-center justify-center">II</span>
                                 <span>追加オプション代</span>
-                            </h4>
+                            </h3>
                             <div class="space-y-4">
                                 ${optionalPricingData.map((item, index) => `
-                                    <div class="flex flex-col sm:flex-row sm:items-center justify-between p-5 sm:p-6 bg-stone-50/60 rounded-2xl border border-stone-200/70 hover:border-stone-300 transition-all animate-on-scroll delay-${(index % 4 + 1) * 100}">
+                                    <div class="md-interactive flex flex-col sm:flex-row sm:items-center justify-between p-5 sm:p-6 md-bg-surface-container rounded-md-lg border md-border-outline-variant transition-all animate-on-scroll delay-${(index % 4 + 1) * 100}">
                                         <div class="mb-2 sm:mb-0 pr-4">
-                                            <h5 class="text-base md:text-lg font-bold text-stone-800 flex items-center gap-2">
-                                                <i data-lucide="plus" class="text-orange-600 w-4 h-4 shrink-0"></i>
+                                            <h4 class="text-base md:text-lg font-bold md-text-on-surface flex items-center gap-2">
+                                                <span class="material-symbols-outlined md-text-primary text-[20px]">add_circle</span>
                                                 <span>${item.item}</span>
-                                            </h5>
-                                            <p class="text-sm text-stone-500 mt-1 pl-6">${item.notes}</p>
+                                            </h4>
+                                            <p class="text-sm md-text-on-surface-variant mt-1 pl-7">${item.notes}</p>
                                         </div>
                                         <div class="text-right shrink-0">
-                                            <p class="text-2xl md:text-3xl font-bold text-stone-800">
-                                                ${formatPrice(item.price)}<span class="text-sm font-normal text-stone-600 ml-0.5">${item.unit}</span>
+                                            <p class="text-2xl md:text-3xl font-bold md-text-on-surface font-mono">
+                                                ${formatPrice(item.price)}<span class="text-sm font-sans font-normal md-text-on-surface-variant ml-1">${item.unit}</span>
                                             </p>
                                         </div>
                                     </div>
@@ -882,7 +1115,7 @@
                         </div>
                     </div>
 
-                    <div class="mt-10 pt-6 border-t border-stone-100 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-stone-500 text-xs md:text-sm animate-on-scroll">
+                    <div class="mt-10 pt-6 border-t md-border-outline-variant flex flex-col sm:flex-row sm:items-center justify-between gap-2 md-text-on-surface-variant text-xs md:text-sm animate-on-scroll">
                         <p>※ 上記は目安の料金です。デザインの複雑さ、パーツ数、リギングの精度により変動します。</p>
                         <p>※ 詳細なご依頼内容に基づき、個別にお見積りを作成いたします。</p>
                     </div>
@@ -891,37 +1124,41 @@
         `;
 
         const Flow = () => `
-            <section id="flow" class="relative z-10 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1480px] mx-auto">
-                <div class="bg-white rounded-[2.5rem] border border-stone-200/80 shadow-sm p-7 sm:p-12 lg:p-16 xl:p-20 relative overflow-hidden">
+            <section id="flow" class="relative z-10 py-14 sm:py-20 px-4 sm:px-8 lg:px-12 max-w-[1480px] mx-auto">
+                <div class="md-bg-surface-low rounded-md-xl border md-border-outline-variant md-elevation-1 p-7 sm:p-12 lg:p-16 relative overflow-hidden">
                     <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 animate-on-scroll">
                         <div>
-                            <p class="text-orange-600 font-semibold text-xs uppercase tracking-widest mb-1.5">Production Pipeline</p>
-                            <h3 class="text-3xl md:text-4xl font-bold text-stone-900 tracking-normal">
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md-sm md-bg-secondary-container text-xs font-bold uppercase tracking-wider mb-2">
+                                <span class="material-symbols-outlined text-[16px]">account_tree</span>
+                                <span>Production Pipeline</span>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold md-text-on-surface tracking-tight">
                                 WORKFLOW
-                            </h3>
+                            </h2>
                         </div>
-                        <p class="text-stone-500 text-sm md:text-base">ご依頼から納品までの5つのステップ</p>
+                        <p class="md-text-on-surface-variant text-sm md:text-base">ご依頼から納品までの5つのステップ</p>
                     </div>
 
-                    <!-- PCでは横並び5カラムでワイドに表示 / タブレット2〜3列 / スマホは縦積み -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+                    <!-- M3 Stepper Cards (5 columns on XL) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
                         ${workflowSteps.map((item, index) => `
-                            <div class="bg-stone-50 p-6 sm:p-7 rounded-3xl border border-stone-200/80 flex flex-col justify-between relative group hover:border-stone-300 transition-all duration-300 animate-on-scroll delay-${(index % 4 + 1) * 100}">
+                            <div class="md-bg-surface-lowest p-6 rounded-md-lg border md-border-outline-variant md-elevation-1 flex flex-col justify-between relative group transition-all duration-300 animate-on-scroll delay-${(index % 4 + 1) * 100}">
                                 <div>
-                                    <div class="flex items-center justify-between mb-6">
-                                        <span class="text-xs font-bold uppercase tracking-wider text-orange-600 bg-orange-50 border border-orange-200/60 px-3 py-1 rounded-full">
+                                    <div class="flex items-center justify-between mb-5">
+                                        <span class="text-xs font-bold uppercase tracking-wider md-bg-primary-container px-3 py-1 rounded-md-sm font-mono">
                                             STEP ${item.step}
                                         </span>
-                                        <div class="w-11 h-11 bg-stone-800 text-white flex items-center justify-center rounded-2xl shadow-sm shrink-0">
-                                            <i data-lucide="${item.icon}" class="w-5 h-5"></i>
+                                        <div class="w-11 h-11 md-bg-secondary-container flex items-center justify-center rounded-md-md shrink-0">
+                                            <span class="material-symbols-outlined text-[22px]">${item.icon}</span>
                                         </div>
                                     </div>
-                                    <h4 class="text-lg font-bold text-stone-900 mb-3">${item.title}</h4>
-                                    <p class="text-stone-600 text-sm leading-relaxed">
+                                    <h3 class="text-lg font-bold md-text-on-surface mb-3">${item.title}</h3>
+                                    <p class="md-text-on-surface-variant text-sm leading-relaxed">
                                         ${item.desc}
                                     </p>
                                 </div>
-                                <div class="mt-6 pt-4 border-t border-stone-200/60 flex items-center justify-between text-xs text-stone-400">
+                                <div class="mt-6 pt-4 border-t md-border-outline-variant flex items-center gap-2 text-xs md-text-primary font-medium">
+                                    <span class="material-symbols-outlined text-[16px]">task_alt</span>
                                     <span>${item.deliverable}</span>
                                 </div>
                             </div>
@@ -932,84 +1169,100 @@
         `;
 
         const Contact = () => `
-            <section id="contact" class="relative z-10 py-16 sm:py-24 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[1480px] mx-auto">
-                <!-- PCでは左に連絡先、右にご依頼テンプレートを配置して横幅を有効活用 -->
+            <section id="contact" class="relative z-10 py-14 sm:py-20 px-4 sm:px-8 lg:px-12 max-w-[1480px] mx-auto">
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 xl:gap-12 items-start">
-                    <!-- 左カラム：タイトル＆連絡先カード (5 cols) -->
+                    
+                    <!-- 左カラム：タイトル＆連絡先 M3 Action Cards (5 cols) -->
                     <div class="lg:col-span-5 space-y-6">
                         <div class="animate-on-scroll">
-                            <p class="text-orange-600 font-semibold text-xs uppercase tracking-widest mb-1.5">Get In Touch</p>
-                            <h3 class="text-3xl md:text-4xl font-bold text-stone-900 tracking-normal mb-4">
+                            <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-md-sm md-bg-secondary-container text-xs font-bold uppercase tracking-wider mb-2">
+                                <span class="material-symbols-outlined text-[16px]">chat</span>
+                                <span>Get In Touch</span>
+                            </div>
+                            <h2 class="text-3xl md:text-4xl font-bold md-text-on-surface tracking-tight mb-4">
                                 CONTACT
-                            </h3>
-                            <p class="text-stone-600 leading-relaxed text-base md:text-lg">
+                            </h2>
+                            <p class="md-text-on-surface-variant leading-relaxed text-base md:text-lg">
                                 制作のご依頼、お見積り、ご相談などお気軽にご連絡ください。<br/>
                                 ご依頼をお待ちしています！
                             </p>
                         </div>
 
                         <div class="space-y-4">
-                            <!-- X (旧Twitter) -->
-                            <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="group flex items-center gap-5 p-6 sm:p-7 bg-white rounded-3xl border border-stone-200/80 hover:border-stone-400 shadow-sm hover:shadow-md transition-all duration-300 animate-on-scroll delay-100">
-                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border border-stone-200 shrink-0">
+                            <!-- X (旧Twitter) M3 Card -->
+                            <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="md-interactive group flex items-center gap-5 p-6 md-bg-surface-low rounded-md-xl border md-border-outline-variant md-elevation-1 hover:md-elevation-3 transition-all duration-300 animate-on-scroll delay-100">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full overflow-hidden border md-border-outline-variant shrink-0">
                                     <img src="${PROFILE_IMAGE_URL}" alt="X Profile" class="w-full h-full object-cover" />
                                 </div>
                                 <div class="text-left flex-1 min-w-0">
-                                    <span class="font-bold text-lg text-stone-900 block">X (Twitter)</span>
-                                    <p class="text-sm text-stone-500 mt-0.5">@Natorium_23 / DM Open</p>
+                                    <span class="font-bold text-lg md-text-on-surface block">X (Twitter)</span>
+                                    <p class="text-sm md-text-on-surface-variant mt-0.5">@Natorium_23 / DM Open</p>
                                 </div>
-                                <div class="w-10 h-10 rounded-full bg-stone-100 group-hover:bg-stone-800 group-hover:text-white flex items-center justify-center transition-colors shrink-0">
-                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                <div class="w-10 h-10 rounded-full md-bg-primary-container flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">open_in_new</span>
                                 </div>
                             </a>
 
-                            <!-- Email -->
-                            <a href="mailto:natorium23cg@gmail.com" class="group flex items-center gap-5 p-6 sm:p-7 bg-white rounded-3xl border border-stone-200/80 hover:border-stone-400 shadow-sm hover:shadow-md transition-all duration-300 animate-on-scroll delay-200">
-                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-stone-100 group-hover:bg-orange-600 flex items-center justify-center shrink-0 transition-colors">
-                                    <i data-lucide="mail" class="text-stone-700 group-hover:text-white w-6 h-6 sm:w-7 sm:h-7 transition-colors"></i>
+                            <!-- Email M3 Card -->
+                            <a href="mailto:natorium23cg@gmail.com" class="md-interactive group flex items-center gap-5 p-6 md-bg-surface-low rounded-md-xl border md-border-outline-variant md-elevation-1 hover:md-elevation-3 transition-all duration-300 animate-on-scroll delay-200">
+                                <div class="w-14 h-14 sm:w-16 sm:h-16 rounded-full md-bg-primary-container flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[28px]">mail</span>
                                 </div>
                                 <div class="text-left flex-1 min-w-0">
-                                    <span class="font-bold text-lg text-stone-900 block">Email</span>
-                                    <p class="text-sm text-stone-500 truncate mt-0.5">natorium23cg@gmail.com</p>
+                                    <span class="font-bold text-lg md-text-on-surface block">Email</span>
+                                    <p class="text-sm md-text-on-surface-variant truncate mt-0.5">natorium23cg@gmail.com</p>
                                 </div>
-                                <div class="w-10 h-10 rounded-full bg-stone-100 group-hover:bg-orange-600 group-hover:text-white flex items-center justify-center transition-colors shrink-0">
-                                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                                <div class="w-10 h-10 rounded-full md-bg-primary-container flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-[20px]">arrow_outward</span>
                                 </div>
                             </a>
                         </div>
                     </div>
 
-                    <!-- 右カラム：ご依頼テンプレート (7 cols) -->
-                    <div class="lg:col-span-7 bg-white p-7 sm:p-10 lg:p-12 rounded-3xl border border-stone-200/80 text-left shadow-sm relative overflow-hidden animate-on-scroll delay-300">
+                    <!-- 右カラム：ご依頼テンプレート (M3 Outlined Text Field Card - 7 cols) -->
+                    <div class="lg:col-span-7 md-bg-surface-low p-7 sm:p-10 lg:p-12 rounded-md-xl border md-border-outline-variant text-left md-elevation-1 relative overflow-hidden animate-on-scroll delay-300">
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
                             <div class="flex items-center gap-3">
-                                <span class="bg-orange-600 w-1.5 h-7 rounded-full block"></span>
-                                <h4 class="text-stone-900 font-bold text-lg md:text-xl">ご依頼テンプレート</h4>
+                                <div class="w-10 h-10 rounded-md-md md-bg-primary-container flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[20px]">description</span>
+                                </div>
+                                <div>
+                                    <h3 class="md-text-on-surface font-bold text-lg md:text-xl">ご依頼テンプレート</h3>
+                                    <p class="text-xs md-text-on-surface-variant">自由に編集してコピーできます</p>
+                                </div>
                             </div>
+                            <!-- M3 Filled Button -->
                             <button 
                                 type="button"
                                 onclick="copyTemplateText()"
-                                class="inline-flex items-center justify-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-semibold text-xs md:text-sm px-5 py-2.5 rounded-full transition-all shrink-0"
+                                class="md-interactive inline-flex items-center justify-center gap-2 md-bg-primary font-medium text-xs md:text-sm h-11 px-6 rounded-full md-elevation-1 hover:md-elevation-2 shrink-0"
                             >
-                                <i data-lucide="copy" class="w-4 h-4"></i>
+                                <span class="material-symbols-outlined text-[18px]">content_copy</span>
                                 <span>テンプレートをコピー</span>
                             </button>
                         </div>
 
-                        <textarea 
-                            id="commission-template-text"
-                            rows="8"
-                            class="w-full text-sm md:text-base bg-stone-50 focus:bg-white p-5 rounded-2xl border border-stone-200 focus:border-stone-400 focus:outline-none text-stone-700 leading-relaxed transition-colors"
-                        >■ ご希望モデルの種類 (Vtuber/VRChatアバター/その他):
+                        <!-- M3 Outlined Multiline Text Field -->
+                        <div class="relative">
+                            <label for="commission-template-text" class="block text-xs font-bold md-text-primary uppercase tracking-wider mb-2">
+                                ヒアリングシート項目
+                            </label>
+                            <textarea 
+                                id="commission-template-text"
+                                rows="8"
+                                class="w-full text-sm md:text-base md-bg-surface-lowest p-5 rounded-md-md border-2 md-border-outline-variant focus:border-[var(--md-sys-color-primary)] focus:outline-none md-text-on-surface leading-relaxed transition-colors"
+                            >■ ご希望モデルの種類 (Vtuber/VRChatアバター/その他):
 ■ キャラクター概要 (既存デザインがある場合はURLや画像添付):
 ■ 使用用途 (配信/VRChat/ゲーム開発など):
 ■ 納品希望形式 (VRM/UnityPackage/FBXなど):
 ■ 予算感 (可能な範囲でご記入ください):
 ■ 納期希望日:
 ■ その他ご要望:</textarea>
+                        </div>
 
-                        <p class="mt-4 text-xs md:text-sm text-stone-500">
-                            ※ 上記テンプレートをコピーし、DMまたはメールにてご連絡いただけるとスムーズです。
+                        <p class="mt-4 text-xs md:text-sm md-text-on-surface-variant flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-[16px] md-text-primary">tips_and_updates</span>
+                            <span>上記テンプレートをコピーし、XのDMまたはメールにてご連絡いただけるとスムーズです。</span>
                         </p>
                     </div>
                 </div>
@@ -1017,28 +1270,44 @@
         `;
 
         const Footer = () => `
-            <footer class="relative z-10 py-12 bg-stone-900 text-stone-300 text-center">
+            <footer class="relative z-10 pt-12 pb-24 lg:pb-12 md-bg-surface-container-highest md-text-on-surface border-t md-border-outline-variant text-center">
                 <div class="max-w-[1480px] mx-auto px-6 sm:px-10 lg:px-16 flex flex-col md:flex-row items-center justify-between gap-6">
                     <div class="flex items-center gap-3">
-                        <img src="${PROFILE_IMAGE_URL}" alt="Natorium_23" class="w-8 h-8 rounded-full object-cover" />
-                        <span class="font-bold text-base text-white">Natorium_23</span>
+                        <img src="${PROFILE_IMAGE_URL}" alt="Natorium_23" class="w-9 h-9 rounded-full object-cover border md-border-outline-variant" />
+                        <div class="text-left">
+                            <span class="font-bold text-base md-text-on-surface block">Natorium_23</span>
+                            <span class="text-xs md-text-on-surface-variant">3DCG Character & Avatar Designer</span>
+                        </div>
                     </div>
 
-                    <div class="flex items-center gap-4">
-                        <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="text-stone-400 hover:text-white transition-colors">
-                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                    <div class="flex items-center gap-3">
+                        <a href="https://x.com/Natorium_23" target="_blank" rel="noopener noreferrer" class="md-interactive w-10 h-10 rounded-full md-bg-surface-low border md-border-outline-variant flex items-center justify-center md-text-on-surface" aria-label="X (Twitter)">
+                            <span class="material-symbols-outlined text-[20px]">share</span>
                         </a>
-                        <a href="mailto:natorium23cg@gmail.com" class="text-stone-400 hover:text-white transition-colors">
-                            <i data-lucide="mail" class="w-5 h-5"></i>
+                        <a href="mailto:natorium23cg@gmail.com" class="md-interactive w-10 h-10 rounded-full md-bg-surface-low border md-border-outline-variant flex items-center justify-center md-text-on-surface" aria-label="Email">
+                            <span class="material-symbols-outlined text-[20px]">mail</span>
                         </a>
                     </div>
                 </div>
-                <div class="max-w-[1480px] mx-auto px-6 sm:px-10 lg:px-16 mt-8 pt-6 border-t border-stone-800 text-xs text-stone-500">
-                    &copy; 2024 Natorium_23. All rights reserved.
+                <div class="max-w-[1480px] mx-auto px-6 sm:px-10 lg:px-16 mt-8 pt-6 border-t md-border-outline-variant text-xs md-text-on-surface-variant">
+                    &copy; 2024 Natorium_23. All rights reserved. Designed with Google Material Design 3.
                 </div>
             </footer>
         `;
 
+        // M3 Extended Floating Action Button (FAB)
+        const FloatingActionButton = () => `
+            <button
+                onclick="scrollToSection('contact')"
+                class="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-40 md-interactive h-14 px-5 rounded-md-lg md-bg-primary-container md-elevation-3 hover:md-elevation-4 flex items-center gap-3 font-bold text-sm"
+                title="ご依頼・お見積り相談へ移動"
+            >
+                <span class="material-symbols-outlined text-[22px]">edit_square</span>
+                <span class="hidden sm:inline">ご依頼・相談</span>
+            </button>
+        `;
+
+        // M3 Extra-Large Dialog (Work Modal)
         const WorkModal = (work) => {
             if (!work) return '';
 
@@ -1079,7 +1348,7 @@
 
             let linksHtml = '';
             if (hasMainLink || hasVroidLink) {
-                linksHtml += '<div class="pt-6 border-t border-slate-100 flex flex-col gap-3">';
+                linksHtml += '<div class="pt-6 border-t md-border-outline-variant flex flex-col gap-3">';
                 
                 if (hasMainLink) {
                     linksHtml += `
@@ -1087,10 +1356,10 @@
                             href="${work.link}" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            class="w-full inline-flex items-center justify-center gap-2 text-white bg-slate-900 hover:bg-orange-500 px-6 py-4 rounded-2xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl group"
+                            class="md-interactive w-full h-12 inline-flex items-center justify-center gap-2 md-bg-primary px-6 rounded-full font-bold text-sm md-elevation-1 hover:md-elevation-2"
                         >
                             <span>関連リンク・動画を見る (X)</span>
-                            <i data-lucide="external-link" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+                            <span class="material-symbols-outlined text-[18px]">open_in_new</span>
                         </a>
                     `;
                 }
@@ -1101,12 +1370,10 @@
                             href="${work.vroidHubLink}" 
                             target="_blank" 
                             rel="noopener noreferrer"
-                            class="w-full inline-flex items-center justify-center gap-2 text-rose-500 bg-rose-50/60 border-2 border-rose-500 hover:bg-rose-500 hover:text-white px-6 py-4 rounded-2xl font-bold transition-all duration-300 shadow-sm hover:shadow-md group"
+                            class="md-interactive w-full h-12 inline-flex items-center justify-center gap-2 md-bg-secondary-container px-6 rounded-full font-bold text-sm md-elevation-1"
                         >
-                            <span class="flex items-center gap-2">
-                                <i data-lucide="box" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
-                                <span>VRoid Hubで3Dモデルを見る</span>
-                            </span>
+                            <span class="material-symbols-outlined text-[20px]">view_in_ar</span>
+                            <span>VRoid Hubで3Dモデルを見る</span>
                         </a>
                     `;
                 }
@@ -1117,65 +1384,72 @@
             return `
                 <div 
                     id="work-modal"
-                    class="fixed inset-0 z-[100] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
-                    onclick="closeModal()" 
+                    class="fixed inset-0 z-[100] bg-black/50 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+                    onclick="closeModal()"
+                    role="dialog"
+                    aria-modal="true"
                 >
                     <div 
-                        class="bg-white rounded-[2.5rem] w-full max-w-6xl max-h-[92vh] overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-white/20"
+                        class="md-bg-surface rounded-md-xl w-full max-w-6xl max-h-[92vh] overflow-hidden md-elevation-4 flex flex-col lg:flex-row border md-border-outline-variant"
                         onclick="event.stopPropagation()"
                     >
-                        <!-- 左側: 3Dスタジオビューワー風画像エリア (2/3) -->
-                        <div class="w-full lg:w-2/3 shrink-0 bg-slate-900 relative flex flex-col justify-between p-4 sm:p-6 h-[52vh] lg:h-[86vh] overflow-hidden studio-grid-bg">
+                        <!-- 左側: 明るくクリアなスタジオビューワーエリア (2/3) -->
+                        <div class="w-full lg:w-2/3 shrink-0 bg-stone-50 border-b lg:border-b-0 lg:border-r md-border-outline-variant relative flex flex-col justify-between p-4 sm:p-6 h-[54vh] lg:h-[86vh] overflow-hidden">
                             
-                            <!-- トップバー -->
-                            <div class="flex items-center justify-between z-20">
-                                <div class="flex items-center gap-2 bg-slate-800/90 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-slate-700 text-xs font-mono text-slate-300">
-                                    <span class="w-2 h-2 rounded-full bg-orange-500"></span>
+                            <!-- トップバー (M3 Segmented Button Switcher) -->
+                            <div class="flex items-center justify-between z-20 gap-2">
+                                <div class="flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full text-xs font-bold md-text-on-surface border md-border-outline-variant md-elevation-1">
+                                    <span class="w-2 h-2 rounded-full md-bg-primary"></span>
                                     <span>${currentImage.label}</span>
                                 </div>
 
                                 ${imageMap.length > 1 ? `
-                                    <div class="flex items-center gap-1 bg-slate-800/90 p-1 rounded-full border border-slate-700">
-                                        ${imageMap.map(img => `
+                                    <!-- M3 Segmented Button Bar -->
+                                    <div class="inline-flex items-center bg-white p-1 rounded-full border md-border-outline-variant md-elevation-1">
+                                        ${imageMap.map(img => {
+                                            const active = img.key === currentImageKey;
+                                            return `
                                             <button 
                                                 onclick="setActiveModalImage('${img.key}')"
-                                                class="px-3 py-1 rounded-full text-xs font-bold transition-all ${
-                                                    img.key === currentImageKey 
-                                                        ? 'bg-orange-500 text-white' 
-                                                        : 'text-slate-300 hover:text-white'
+                                                class="md-interactive px-3.5 py-1 rounded-full text-xs font-bold flex items-center gap-1 transition-all ${
+                                                    active 
+                                                        ? 'md-bg-primary-container' 
+                                                        : 'md-text-on-surface-variant hover:md-text-on-surface'
                                                 }"
                                             >
-                                                ${img.key === 'main' ? 'メイン' : img.key === 'tpose' ? 'Tポーズ' : img.label}
+                                                ${active ? '<span class="material-symbols-outlined text-[14px]">check</span>' : ''}
+                                                <span>${img.key === 'main' ? 'メイン' : img.key === 'tpose' ? 'Tポーズ' : img.label}</span>
                                             </button>
-                                        `).join('')}
+                                        `}).join('')}
                                     </div>
                                 ` : ''}
 
                                 <button 
                                     onclick="closeModal()"
-                                    class="bg-slate-800 hover:bg-orange-500 p-2 rounded-full text-white transition-colors lg:hidden"
+                                    class="md-interactive bg-white w-10 h-10 rounded-full md-text-on-surface border md-border-outline-variant md-elevation-1 flex items-center justify-center lg:hidden"
+                                    aria-label="閉じる"
                                 >
-                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                    <span class="material-symbols-outlined">close</span>
                                 </button>
                             </div>
                             
-                            <!-- メイン画像 -->
+                            <!-- メイン画像（暗い影や暗転フィルターなしで本来の色味を100%表示） -->
                             <div class="w-full flex-1 flex items-center justify-center my-2 relative min-h-0">
                                 <img 
                                     src="${currentImage.src}" 
                                     alt="${currentImage.alt}" 
-                                    class="max-w-full max-h-full object-contain transition-all duration-300 drop-shadow-2xl rounded-xl"
+                                    class="max-w-full max-h-full object-contain transition-all duration-300 rounded-md-md"
                                     onerror="this.onerror=null; this.src='https://placehold.co/1000x1500/EF4444/ffffff?text=Image+Error';"
                                 />
                             </div>
 
-                            <!-- サムネイルセレクター -->
+                            <!-- サムネイルセレクター（暗みをなくしクリアに表示） -->
                             <div class="flex-shrink-0 w-full flex space-x-3 justify-center items-center h-20 z-10 overflow-x-auto">
                                 ${imageMap.map(data => `
                                     <button
                                         onclick="setActiveModalImage('${data.key}')" 
-                                        class="group relative w-16 h-16 sm:w-20 sm:h-20 bg-slate-800 rounded-2xl overflow-hidden cursor-pointer transition-all duration-200 border-2 flex-shrink-0 ${
-                                            data.key === currentImageKey ? 'border-orange-500 scale-105 shadow-lg shadow-orange-500/30' : 'border-slate-700 opacity-60 hover:opacity-100'
+                                        class="relative w-16 h-16 sm:w-20 sm:h-20 bg-white rounded-md-md overflow-hidden cursor-pointer transition-all duration-200 border-2 flex-shrink-0 ${
+                                            data.key === currentImageKey ? 'border-[var(--md-sys-color-primary)] scale-105 md-elevation-2' : 'md-border-outline-variant hover:border-stone-400'
                                         }"
                                     >
                                         <img 
@@ -1189,40 +1463,45 @@
                         </div>
 
                         <!-- 右側: 詳細スペック＆説明 (1/3) -->
-                        <div class="w-full lg:w-1/3 flex flex-col bg-white h-full max-h-[40vh] lg:max-h-[86vh] relative">
+                        <div class="w-full lg:w-1/3 flex flex-col md-bg-surface h-full max-h-[40vh] lg:max-h-[86vh] relative">
                             <button 
                                 onclick="closeModal()"
-                                class="absolute top-5 right-5 w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-900 text-slate-600 hover:text-white items-center justify-center transition-colors z-20 hidden lg:flex"
+                                class="md-interactive absolute top-5 right-5 w-10 h-10 rounded-full md-bg-surface-container-high md-text-on-surface items-center justify-center z-20 hidden lg:flex"
+                                aria-label="閉じる"
                             >
-                                <i data-lucide="x" class="w-5 h-5"></i>
+                                <span class="material-symbols-outlined">close</span>
                             </button>
 
                             <div class="p-7 lg:p-9 overflow-y-auto custom-scroll flex-1">
-                                <div class="mb-6">
-                                    <span class="px-3.5 py-1 text-xs font-bold tracking-wider text-orange-600 bg-orange-100 rounded-full uppercase inline-block mb-3">
+                                <div class="mb-6 pr-8">
+                                    <span class="px-3 py-1 text-xs font-bold tracking-wider md-bg-primary-container rounded-md-sm uppercase inline-block mb-3">
                                         ${filterTabs.find(t => t.id === work.category)?.name || work.category}
                                     </span>
-                                    <h2 class="text-xl lg:text-2xl font-bold text-slate-900 leading-tight">
-                                        ${work.title.replace(/ "(.+)"/, '<br/><span class="block mt-1.5 text-2xl lg:text-3xl font-black text-slate-900">"$1"</span>')}
+                                    <h2 class="text-xl lg:text-2xl font-bold md-text-on-surface leading-tight">
+                                        ${work.title.replace(/ "(.+)"/, '<br/><span class="block mt-1.5 text-2xl lg:text-3xl font-extrabold md-text-primary">"$1"</span>')}
                                     </h2>
                                 </div>
 
-                                <!-- 制作コメント -->
-                                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200/70 mb-7">
-                                    <div class="text-[11px] font-mono font-bold text-slate-400 uppercase tracking-wider mb-1.5">CREATOR'S COMMENT</div>
-                                    <p class="text-slate-700 leading-relaxed font-medium text-sm md:text-base">
+                                <!-- 制作コメント (M3 Surface Container Card) -->
+                                <div class="md-bg-surface-container p-5 rounded-md-lg border md-border-outline-variant mb-7">
+                                    <div class="text-[11px] font-mono font-bold md-text-primary uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[16px]">notes</span>
+                                        <span>CREATOR'S COMMENT</span>
+                                    </div>
+                                    <p class="md-text-on-surface leading-relaxed font-normal text-sm md:text-base">
                                         ${work.description}
                                     </p>
                                 </div>
 
-                                <!-- 使用ツール・仕様 -->
+                                <!-- 使用ツール・仕様 (M3 Chips) -->
                                 <div class="mb-8">
-                                    <h3 class="text-xs font-mono font-bold text-slate-400 uppercase tracking-widest mb-3 flex items-center gap-2">
-                                        <i data-lucide="cpu" class="w-4 h-4 text-orange-500"></i> Specs & Tools
+                                    <h3 class="text-xs font-mono font-bold md-text-on-surface-variant uppercase tracking-widest mb-3 flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined text-[18px] md-text-primary">memory</span>
+                                        <span>Specs & Tools</span>
                                     </h3>
                                     <div class="flex flex-wrap gap-2">
                                         ${work.specs.filter(Boolean).map(spec => `
-                                            <span class="inline-flex items-center px-3.5 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-800 border border-slate-200 shadow-sm">
+                                            <span class="inline-flex items-center px-3.5 py-1.5 rounded-md-sm text-xs font-bold md-bg-surface-lowest md-text-on-surface border md-border-outline-variant md-elevation-1">
                                                 ${spec}
                                             </span>
                                         `).join('')}
@@ -1232,13 +1511,13 @@
                                 <!-- 外部リンクボタン群 -->
                                 ${linksHtml}
 
-                                <!-- この作品のような依頼をする導線 -->
-                                <div class="mt-6 pt-6 border-t border-slate-100">
+                                <!-- この作品のような依頼をする導線 (M3 Outlined Button) -->
+                                <div class="mt-6 pt-6 border-t md-border-outline-variant">
                                     <button 
                                         onclick="closeModal(); scrollToSection('contact');"
-                                        class="w-full py-3.5 px-4 rounded-2xl bg-orange-50 hover:bg-orange-100 text-orange-600 font-bold text-xs flex items-center justify-center gap-2 transition-colors"
+                                        class="md-interactive w-full h-11 px-4 rounded-full md-bg-surface-container-high md-text-primary font-bold text-xs flex items-center justify-center gap-2 border md-border-outline-variant"
                                     >
-                                        <i data-lucide="message-circle" class="w-4 h-4"></i>
+                                        <span class="material-symbols-outlined text-[18px]">forum</span>
                                         <span>この実績のようなモデル制作を相談する</span>
                                     </button>
                                 </div>
@@ -1286,28 +1565,23 @@
             if (!app) return;
 
             app.innerHTML = `
-                <div class="min-h-screen relative studio-grid-bg">
-                    <!-- 控えめで落ち着いた背景グラデーション装飾 -->
-                    <div class="fixed top-[-15%] right-[-10%] w-[500px] h-[500px] bg-orange-100/40 rounded-full blur-[120px] pointer-events-none z-0"></div>
-                    <div class="fixed bottom-[-15%] left-[-10%] w-[500px] h-[500px] bg-stone-200/50 rounded-full blur-[120px] pointer-events-none z-0"></div>
-
+                <div class="min-h-screen relative">
                     ${Header()}
-                    ${Hero()}
-                    ${About()}
-                    ${Works()}
-                    ${Price()}
-                    ${Flow()}
-                    ${Contact()}
+                    <main>
+                        ${Hero()}
+                        ${About()}
+                        ${Works()}
+                        ${Price()}
+                        ${Flow()}
+                        ${Contact()}
+                    </main>
                     ${Footer()}
+                    ${FloatingActionButton()}
+                    ${MobileBottomNavigation()}
                 </div>
             `;
             
             renderModal();
-
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
             initScrollAnimations();
         };
 
@@ -1325,8 +1599,8 @@
             let currentNumber = 0;
             
             const counter = setInterval(() => {
-                let increment = (Math.random() * 4 + 1.2) * 0.65; 
-                if (currentNumber > 80) increment = (Math.random() * 1.8 + 0.5) * 0.65; 
+                let increment = (Math.random() * 4 + 1.5) * 0.75; 
+                if (currentNumber > 80) increment = (Math.random() * 2 + 0.6) * 0.75; 
                 
                 currentNumber += increment;
 
@@ -1343,12 +1617,12 @@
                             loadingScreen.style.display = 'none';
                             document.body.style.overflow = ''; 
                         }, 700); 
-                    }, 300);
+                    }, 250);
                 } else {
                     numberElement.textContent = Math.floor(currentNumber);
                     barElement.style.width = `${currentNumber}%`;
                 }
-            }, 25);
+            }, 22);
         };
 
         document.addEventListener('DOMContentLoaded', () => {
